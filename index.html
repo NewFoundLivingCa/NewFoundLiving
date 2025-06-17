@@ -1,118 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>NewFound Living - Coming Soon</title>
-<style>
-  :root {
-    --green-primary: #4caf50;
-    --green-dark: #2e6e36;
-    --green-light: #a5d6a7;
-    --bg-gradient-start: #a5d6a7;
-    --bg-gradient-end: #4caf50;
-    --text-light: #f0f0f0;
-    --text-dark: #2e2e2e;
-  }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NewFound Living - Coming Soon</title>
+  <style>
+    :root {
+      --green-primary: #4caf50;
+      --green-dark: #2e6e36;
+      --green-light: #a5d6a7;
+      --bg-gradient-start: #a5d6a7;
+      --bg-gradient-end: #4caf50;
+      --text-light: #f0f0f0;
+      --text-dark: #2e2e2e;
+    }
 
-  body, html {
-    margin: 0;
-    height: 100%;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-end));
-    color: var(--text-light);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 1rem;
-  }
+    body, html {
+      margin: 0;
+      height: 100%;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-end));
+      color: var(--text-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 1rem;
+    }
 
-  .container {
-    background: rgba(255 255 255 / 0.1);
-    padding: 3rem 2rem;
-    border-radius: 12px;
-    max-width: 400px;
-    width: 100%;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-  }
-
-  .logo {
-    width: 100px;
-    height: 100px;
-    margin: 0 auto 1.5rem;
-    background-color: var(--green-dark);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 3.5rem;
-    font-weight: 900;
-    user-select: none;
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);
-  }
-
-  h1 {
-    margin: 0 0 0.5rem;
-    font-size: 2.25rem;
-    font-weight: 700;
-  }
-
-  p {
-    margin: 0 0 2rem;
-    font-size: 1.1rem;
-    color: var(--text-light);
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.25);
-  }
-
-  form {
-    display: flex;
-    gap: 0.5rem;
-  }
-
-  input[type="email"] {
-    flex-grow: 1;
-    padding: 0.75rem 1rem;
-    border-radius: 6px;
-    border: none;
-    font-size: 1rem;
-  }
-
-  button {
-    background-color: var(--green-dark);
-    color: white;
-    font-weight: 700;
-    border: none;
-    padding: 0 1.5rem;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  button:hover {
-    background-color: var(--green-primary);
-  }
-
-  /* Responsive */
-  @media (max-width: 480px) {
     .container {
-      padding: 2rem 1rem;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 3rem 2rem;
+      border-radius: 12px;
+      max-width: 400px;
+      width: 100%;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     }
+
+    .logo-img {
+      width: 120px;
+      height: auto;
+      margin-bottom: 1.5rem;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.2));
+    }
+
     h1 {
-      font-size: 1.75rem;
+      margin: 0 0 0.5rem;
+      font-size: 2.25rem;
+      font-weight: 700;
     }
-    .logo {
-      width: 80px;
-      height: 80px;
-      font-size: 3rem;
-      margin-bottom: 1rem;
+
+    p {
+      margin: 0 0 2rem;
+      font-size: 1.1rem;
+      color: var(--text-light);
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25);
     }
-  }
-</style>
+
+    form {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    input[type="email"] {
+      flex-grow: 1;
+      padding: 0.75rem 1rem;
+      border-radius: 6px;
+      border: none;
+      font-size: 1rem;
+    }
+
+    button {
+      background-color: var(--green-dark);
+      color: white;
+      font-weight: 700;
+      border: none;
+      padding: 0 1.5rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: var(--green-primary);
+    }
+
+    /* Responsive */
+    @media (max-width: 480px) {
+      .container {
+        padding: 2rem 1rem;
+      }
+
+      h1 {
+        font-size: 1.75rem;
+      }
+
+      .logo-img {
+        width: 80px;
+        margin-bottom: 1rem;
+      }
+    }
+  </style>
 </head>
 <body>
 
   <div class="container" role="main">
-    <div class="logo" aria-label="NewFound Living Logo">N</div>
+    <img src="logo.png" alt="NewFound Living Logo" class="logo-img" />
     <h1>Coming Soon</h1>
     <p>We’re working hard to bring you the best rental property solutions.</p>
 
@@ -122,13 +118,13 @@
     </form>
   </div>
 
-<script>
-  document.getElementById('notify-form').addEventListener('submit', e => {
-    e.preventDefault();
-    alert('Thanks for signing up! We will notify you.');
-    e.target.reset();
-  });
-</script>
+  <script>
+    document.getElementById('notify-form').addEventListener('submit', e => {
+      e.preventDefault();
+      alert('Thanks for signing up! We will notify you.');
+      e.target.reset();
+    });
+  </script>
 
 </body>
 </html>
