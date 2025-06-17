@@ -17,10 +17,6 @@
       flex-direction: column;
       text-align: center;
     }
-    img {
-      width: 150px;
-      margin-bottom: 1em;
-    }
     h1 {
       font-size: 3em;
       margin-bottom: 0.25em;
@@ -60,19 +56,26 @@
       font-size: 0.9em;
       color: #888;
     }
+    .logo {
+      max-width: 200px;
+      margin-bottom: 20px;
+    }
   </style>
 </head>
 <body>
-  <img src="Logo.png" alt="NewFound Living Logo" />
+  <!-- Logo linked to your domain -->
+  <a href="https://www.NewFoundLiving.ca">
+    <img src="Logo.png" alt="NewFound Living Logo" class="logo" />
+  </a>
 
   <h1>NewFound Living</h1>
   <p>We’re building something exciting. Our website is launching soon.</p>
-
+  
   <div class="email-box">
     <input type="email" placeholder="Enter your email" />
     <button>Notify Me</button>
   </div>
-
+  
   <footer>© 2025 NewFound Living. All rights reserved.</footer>
 </body>
 </html>
