@@ -4,19 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Newfound Living - Coming Soon</title>
-  <meta name="description" content="Newfound Living—premium rental property management in St. John's & beyond. Coming soon." />
-
-  <!-- Favicon -->
+  <meta name="description" content="Offering quality rental properties in St. John's & surrounding areas. Coming soon!" />
   <link rel="icon" href="smalllogo.png" type="image/png" />
 
-  <!-- Styles -->
   <style>
     :root {
       --green-primary: #4caf50;
       --green-light: #a5d6a7;
       --green-dark: #2e6e36;
       --white: #ffffff;
-      --gray-light: #f9f9f9;
       --overlay: rgba(0, 0, 0, 0.45);
       --text-dark: #333333;
     }
@@ -27,12 +23,12 @@
       color: var(--text-dark);
       line-height: 1.6;
       height: 100%;
-      background-color: var(--gray-light);
+      background-color: var(--green-light);
     }
 
     /* Hero Section */
     .hero {
-      height: 100vh;
+      min-height: 70vh;
       background: url('city.png') center/cover no-repeat;
       position: relative;
       display: flex;
@@ -53,7 +49,7 @@
       max-width: 600px;
     }
     .hero-content .logo {
-      width: 120px;
+      width: 140px;
       margin-bottom: 1rem;
     }
     .hero-content h1 {
@@ -65,31 +61,36 @@
       margin-bottom: 1.5rem;
     }
 
-    /* Form */
-    .hero-content form {
+    form {
       display: flex;
-      gap: 0.5rem;
-      justify-content: center;
-      flex-wrap: wrap;
+      flex-direction: column;
+      gap: 0.75rem;
+      align-items: center;
     }
-    .hero-content input[type="email"] {
-      padding: 0.75rem 1rem;
+    form input, form textarea {
+      width: 100%;
+      max-width: 400px;
+      padding: 0.75rem;
       border: none;
       border-radius: 4px;
-      flex: 1 1 220px;
       font-size: 1rem;
     }
-    .hero-content button {
+    form textarea {
+      resize: vertical;
+      height: 80px;
+    }
+    form button {
+      width: auto;
       padding: 0.75rem 1.5rem;
       background: var(--green-primary);
+      color: var(--white);
       border: none;
       border-radius: 4px;
-      color: var(--white);
-      font-weight: bold;
       cursor: pointer;
       transition: background 0.3s;
+      font-weight: bold;
     }
-    .hero-content button:hover {
+    form button:hover {
       background: var(--green-dark);
     }
     .confirmation {
@@ -98,12 +99,13 @@
       background: rgba(76, 175, 80, 0.25);
       padding: 0.75rem;
       border-radius: 4px;
+      color: var(--white);
     }
 
     /* Features */
     .features {
       padding: 3rem 2rem;
-      max-width: 1000px;
+      max-width: 900px;
       margin: 0 auto;
       display: flex;
       flex-wrap: wrap;
@@ -115,7 +117,7 @@
     }
     .feature h3 {
       font-size: 1.25rem;
-      margin: 0.5rem 0;
+      margin-bottom: 0.5rem;
     }
     .feature p {
       color: var(--text-dark);
@@ -131,16 +133,12 @@
     footer a {
       color: var(--white);
       text-decoration: underline;
-      margin: 0 .5rem;
+      margin: 0 0.5rem;
     }
 
     @media (max-width: 768px) {
-      .hero-content h1 {
-        font-size: 2rem;
-      }
-      .features {
-        flex-direction: column;
-      }
+      .hero-content h1 { font-size: 2rem; }
+      .features { flex-direction: column; }
     }
   </style>
 </head>
@@ -150,11 +148,12 @@
   <section class="hero">
     <div class="hero-content">
       <img src="logo.png" alt="Newfound Living logo" class="logo">
-      <h1>Property Management for St. John's & Beyond</h1>
-      <p>Clean, transparent rentals with responsive service—launching soon.</p>
+      <h1>Coming Soon</h1>
+      <p>Offering quality rental properties in St. John's & surrounding areas.</p>
 
-      <form id="signup-form" action="https://formspree.io/f/xldnwbqq" method="POST">
+      <form id="contact-form" action="https://formspree.io/f/xldnwbqq" method="POST">
         <input type="email" name="email" placeholder="Your email address" required>
+        <textarea name="message" placeholder="Your message (optional)"></textarea>
         <button type="submit">Notify Me</button>
       </form>
       <div class="confirmation" id="confirmation-msg">
@@ -166,33 +165,34 @@
   <!-- Features Section -->
   <section class="features">
     <div class="feature">
-      <h3>📌 Stress‑Free Management</h3>
-      <p>From tenant screening to ongoing maintenance, we've got you covered.</p>
+      <h3>📌 Hassle-Free Rentals</h3>
+      <p>Clean, well-maintained properties ready to move in.</p>
     </div>
     <div class="feature">
       <h3>💡 Transparent Pricing</h3>
-      <p>No hidden fees—just clear, fair property management costs.</p>
+      <p>No surprises—just clear, fair rental rates.</p>
     </div>
     <div class="feature">
-      <h3>🏠 Local Expertise</h3>
-      <p>Rooted in St. John's—serving your community with local knowledge.</p>
+      <h3>🏠 Local Availability</h3>
+      <p>Available specifically in St. John's & surrounding.</p>
     </div>
   </section>
 
   <!-- Footer -->
   <footer>
-    <p>Serving St. John's & Surrounding Areas</p>
     <p>📧 <a href="mailto:info.newfoundliving@gmail.com">info.newfoundliving@gmail.com</a>
-       | 📘 <a href="https://www.facebook.com/profile.php?id=61577097797242" target="_blank">Facebook</a></p>
+       | <a href="https://www.facebook.com/profile.php?id=61577097797242" target="_blank">Facebook</a></p>
+    <p>Serving St. John's & Surrounding Areas</p>
   </footer>
 
   <!-- JavaScript -->
   <script>
-    document.getElementById('signup-form').addEventListener('submit', function(e) {
-      const confirmation = document.getElementById('confirmation-msg');
-      confirmation.style.display = 'block';
-      setTimeout(() => confirmation.style.display = 'none', 6000);
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      document.getElementById('confirmation-msg').style.display = 'block';
+      this.submit();
     });
   </script>
 </body>
 </html>
+
