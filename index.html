@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>NewFound Living - Coming Soon</title>
-  <meta name="description" content="NewFound Living is bringing tenant-focused rental solutions to Newfoundland. Join our email list to stay updated!" />
+  <title>Newfound Living - Coming Soon</title>
+  <meta name="description" content="Newfound Living is bringing tenant-focused rental solutions to Newfoundland. Join our email list to stay updated!" />
   <meta name="robots" content="index, follow" />
-  <meta property="og:title" content="NewFound Living - Coming Soon" />
+  <meta property="og:title" content="Newfound Living - Coming Soon" />
   <meta property="og:description" content="Smart rental property solutions are on the way." />
-  <meta property="og:image" content="Logo.png.png" />
+  <meta property="og:image" content="logo.png" />
   <meta property="og:type" content="website" />
 
   <style>
@@ -39,7 +39,7 @@
       background: rgba(255, 255, 255, 0.1);
       padding: 3rem 2rem;
       border-radius: 12px;
-      max-width: 450px;
+      max-width: 500px;
       width: 100%;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     }
@@ -107,6 +107,32 @@
       text-decoration: underline;
     }
 
+    .about {
+      margin-top: 2.5rem;
+      text-align: left;
+    }
+
+    .about h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: #ffffff;
+    }
+
+    .about p {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .confirmation {
+      display: none;
+      margin-top: 1rem;
+      font-size: 1rem;
+      color: #ffffff;
+      background-color: rgba(76, 175, 80, 0.25);
+      padding: 0.75rem;
+      border-radius: 6px;
+    }
+
     @media (max-width: 480px) {
       .container {
         padding: 2rem 1rem;
@@ -120,27 +146,54 @@
         width: 80px;
         margin-bottom: 1rem;
       }
+
+      .about {
+        text-align: center;
+      }
     }
   </style>
 </head>
 <body>
 
   <div class="container" role="main">
-    <img src="logo.png" alt="NewFound Living Logo" class="logo-img" />
+    <img src="logo.png" alt="Newfound Living Logo" class="logo-img" />
     <h1>Coming Soon</h1>
-    <p>We’re working hard to bring you the best rental property solutions in Newfoundland.</p>
+    <p>We’re working hard to bring you the best rental property solutions in St. John's and surrounding areas.</p>
 
-    <form action="https://formspree.io/f/xldnwbqq" method="POST">
+    <form action="https://formspree.io/f/xldnwbqq" method="POST" id="contact-form">
       <input type="email" name="email" placeholder="Your email" required />
       <textarea name="message" rows="4" placeholder="Your message (optional)"></textarea>
       <button type="submit">Send</button>
     </form>
+
+    <div class="confirmation" id="confirmation-message">
+      ✅ Thanks for reaching out! We'll be in touch soon.
+    </div>
+
+    <div class="about">
+      <h2>About Newfound Living</h2>
+      <p>
+        Newfound Living is a rental property company based in Newfoundland. We focus on clean, comfortable,
+        and well-managed rental units designed to meet the needs of modern tenants. With a hands-on approach,
+        we offer transparency, responsiveness, and quality living for residents in St. John's and nearby communities.
+      </p>
+    </div>
 
     <div class="footer">
       📧 <a href="mailto:info.newfoundliving@gmail.com">Contact Us</a> |
       📘 <a href="https://www.facebook.com/profile.php?id=61577097797242" target="_blank">Facebook</a>
     </div>
   </div>
+
+  <script>
+    document.getElementById("contact-form").addEventListener("submit", function (e) {
+      const confirmation = document.getElementById("confirmation-message");
+      confirmation.style.display = "block";
+      setTimeout(() => {
+        confirmation.style.display = "none";
+      }, 6000);
+    });
+  </script>
 
 </body>
 </html>
