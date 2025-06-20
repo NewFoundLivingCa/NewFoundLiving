@@ -83,26 +83,33 @@
       background-color: var(--green);
       color: var(--white);
       border: none;
-      padding: 0.75rem 2rem;
+      padding: 0.75rem 1.5rem;
       font-size: 1rem;
-      border-radius: 6px;
+      border-radius: 8px;
       cursor: pointer;
       font-weight: bold;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    button:hover {
+      background-color: #388e3c;
     }
 
     .features {
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       gap: 1rem;
       margin-top: 3rem;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
     }
 
     .feature-box {
       background: rgba(0, 0, 0, 0.6);
       padding: 1.5rem;
       border-radius: 8px;
-      max-width: 250px;
+      width: 32%;
+      min-width: 180px;
       text-align: center;
     }
 
@@ -120,21 +127,38 @@
       margin-top: 3rem;
       font-size: 0.9rem;
       color: #ccc;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
     }
 
     footer a {
       color: #ccc;
       text-decoration: underline;
-      margin-left: 0.5rem;
+      margin-left: 0.25rem;
     }
 
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 2.2rem;
-      }
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .social-link img {
+      width: 16px;
+      height: 16px;
+    }
+
+    @media (max-width: 800px) {
       .features {
         flex-direction: column;
         align-items: center;
+      }
+
+      .feature-box {
+        width: 80%;
+        margin-bottom: 1rem;
       }
     }
   </style>
@@ -171,11 +195,13 @@
     </div>
 
     <footer>
-      Serving St. John's & Surrounding | 
-      ✉️ <a href="mailto:info.newfoundliving@gmail.com">info.newfoundliving@gmail.com</a>
-      | <a href="https://www.facebook.com/profile.php?id=61577097797242" target="_blank">Facebook</a>
+      <div>Serving St. John's & Surrounding</div>
+      <div>✉️ <a href="mailto:info.newfoundliving@gmail.com">info.newfoundliving@gmail.com</a></div>
+      <div class="social-link">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook logo">
+        <a href="https://www.facebook.com/profile.php?id=61577097797242" target="_blank">Facebook</a>
+      </div>
     </footer>
   </div>
 </body>
 </html>
-
