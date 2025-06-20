@@ -46,7 +46,7 @@
     }
 
     .logo {
-      width: 120px;
+      width: 200px;
       margin: 0 auto 1.5rem;
     }
 
@@ -150,6 +150,17 @@
       height: 16px;
     }
 
+    .email-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .email-link img {
+      width: 16px;
+      height: 16px;
+    }
+
     @media (max-width: 800px) {
       .features {
         flex-direction: column;
@@ -196,12 +207,16 @@
 
     <footer>
       <div>Serving St. John's & Surrounding</div>
-      <div>✉️ <a href="mailto:info.newfoundliving@gmail.com">info.newfoundliving@gmail.com</a></div>
+      <div class="email-link">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Mail_%28iOS%29.svg" alt="Email icon">
+        <a href="mailto:info.newfoundliving@gmail.com">info.newfoundliving@gmail.com</a>
+      </div>
       <div class="social-link">
         <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook logo">
-        <a href="https://www.facebook.com/profile.php?id=61577097797242" target="_blank">Facebook</a>
+        <a href="https://www.facebook.com/profile.php?id=61577097797242" target="_blank">Visit our Facebook page</a>
       </div>
     </footer>
   </div>
 </body>
 </html>
+
