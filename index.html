@@ -1,3 +1,4 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +11,7 @@
   <meta property="og:image" content="https://newfoundliving.ca/logo-preview.png" />
   <meta property="og:url" content="https://newfoundliving.ca" />
   <meta name="twitter:card" content="summary_large_image" />
-  <link rel="icon" type="image/png" href="tinylogo1.png">
+  <link rel="icon" type="image/png" href="tinylogo1.png" />
   <style>
     :root {
       --green: #2e7d32;
@@ -142,6 +143,7 @@
       max-width: fit-content;
       margin-left: auto;
       margin-right: auto;
+      background-color: rgba(0, 0, 0, 0.4);
     }
 
     footer a {
@@ -177,10 +179,18 @@
       color: lightgreen;
     }
 
+    .rent-link a {
+      color: #ffffff;
+      font-weight: bold;
+      text-decoration: underline;
+      font-size: 1.05rem;
+    }
+
     @media (max-width: 800px) {
-  footer {
-    background-color: rgba(0, 0, 0, 0.6);
-  }
+      footer {
+        background-color: rgba(0, 0, 0, 0.6);
+      }
+
       .features {
         flex-direction: column;
         align-items: center;
@@ -198,10 +208,10 @@
   <div class="container">
     <img src="logo-transparent.png" alt="Newfound Living Logo" class="logo">
     <h1>Welcome to Newfound Living</h1>
-<h2>While all our rental units are currently filled, we’d love to keep you updated. Leave your email and be the first to know when a property becomes available.</h2>
+    <h2>While all our rental units are currently filled, we’d love to keep you updated. Leave your email and be the first to know when a property becomes available.</h2>
 
     <form id="notify-form" action="https://formspree.io/f/xldnwbqq" method="POST">
-      <input type="email" name="email" placeholder="Your email address" required>
+      <input type="email" name="email" placeholder="Your email address" required />
       <textarea name="message" placeholder="Your message (optional)"></textarea>
       <button type="submit">Get Updates</button>
     </form>
@@ -227,13 +237,14 @@
     </div>
 
     <footer>
+      <div class="rent-link">💳 <a href="rent.html">Pay Rent Online</a></div>
       <div>Locally owned and operated in St. John's & surrounding areas</div>
       <div class="email-link">
-        <img src="https://img.icons8.com/ios-filled/50/ffffff/new-post.png" alt="Email icon" width="16" height="16" />
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/new-post.png" alt="Email icon" />
         <a href="mailto:info.newfoundliving@gmail.com">info.newfoundliving@gmail.com</a>
       </div>
       <div class="social-link">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook logo">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook logo" />
         <a href="https://www.facebook.com/profile.php?id=61577097797242" target="_blank">Visit our Facebook page</a>
       </div>
       <div class="privacy">We never share or sell your information. Your privacy is important to us.</div>
