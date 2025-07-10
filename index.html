@@ -70,6 +70,9 @@
       font-weight: normal;
       margin-bottom: 2rem;
       line-height: 1.4;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     nav {
@@ -86,29 +89,27 @@
       background: var(--green);
       padding: 0.5rem 1rem;
       border-radius: 5px;
+      transition: background-color 0.3s;
     }
 
-    .form-box {
+    nav a:hover {
+      background: #27642a;
+    }
+
+    form#notify-form {
+      max-width: 400px;
+      margin: 0 auto;
       text-align: left;
-      max-width: 800px;
-      margin: 2rem auto;
-      color: var(--white);
-      background-color: var(--form-bg);
-      padding: 2rem;
-      border-radius: 10px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.6);
     }
 
-    .form-box label {
+    form#notify-form label {
       display: block;
       margin-top: 1rem;
+      font-weight: 600;
     }
 
-    .form-box input[type="text"],
-    .form-box input[type="email"],
-    .form-box input[type="tel"],
-    .form-box input[type="date"],
-    .form-box textarea {
+    form#notify-form input[type="email"],
+    form#notify-form textarea {
       width: 100%;
       padding: 0.5rem;
       margin-top: 0.25rem;
@@ -116,9 +117,12 @@
       border-radius: 4px;
       background: var(--input-bg);
       color: var(--white);
+      font-size: 1rem;
+      font-family: inherit;
+      resize: vertical;
     }
 
-    button {
+    form#notify-form button {
       background-color: var(--green);
       color: var(--white);
       border: none;
@@ -131,6 +135,19 @@
       max-width: 300px;
       margin: 1rem auto 0;
       display: block;
+      transition: background-color 0.3s;
+    }
+
+    form#notify-form button:hover {
+      background-color: #27642a;
+    }
+
+    #thank-you {
+      display: none;
+      margin-top: 1rem;
+      font-size: 1.1rem;
+      color: lightgreen;
+      text-align: center;
     }
 
     footer {
@@ -173,24 +190,25 @@
       font-size: 0.9rem;
       color: #dddddd;
       text-align: center;
+      margin-top: 0.5rem;
     }
   </style>
 </head>
 <body>
   <div class="overlay"></div>
-  <div class="container">
+  <div class="container" role="main" aria-label="Newfound Living main content">
     <img src="logo-transparent.png" alt="Newfound Living Logo" class="logo" />
     <h1>Welcome to Newfound Living</h1>
     <h2>Our rental units are currently filled. Leave your email to be the first notified when availability opens.</h2>
 
     <nav>
-      <a href="#">Get Updates</a>
+      <a href="#" aria-current="page">Get Updates</a>
       <a href="rental-application.html">Rental Application</a>
-      <a href="https://www.payrent.com/" target="_blank">Pay Rent</a>
+      <a href="https://www.payrent.com/" target="_blank" rel="noopener">Pay Rent</a>
     </nav>
 
-    <form id="notify-form" action="https://formspree.io/f/xldnwbqq" method="POST" class="form-box">
-      <label for="notify-email">Your email address <span>*</span></label>
+    <form id="notify-form" action="https://formspree.io/f/xldnwbqq" method="POST" novalidate>
+      <label for="notify-email">Your email address <span aria-hidden="true">*</span></label>
       <input type="email" name="email" id="notify-email" placeholder="you@example.com" required />
 
       <label for="notify-message">Your message (optional)</label>
@@ -198,17 +216,17 @@
 
       <button type="submit">Submit</button>
     </form>
-    <div id="thank-you" style="display: none; text-align:center; margin-top:1rem;">Thanks for signing up! We'll be in touch soon.</div>
+    <div id="thank-you" role="alert" aria-live="polite">Thanks for signing up! We'll be in touch soon.</div>
   </div>
 
-  <footer>
+  <footer role="contentinfo" aria-label="Footer">
     <div class="email-link">
-      <img src="https://img.icons8.com/ios-filled/50/ffffff/new-post.png" alt="Email Icon">
+      <img src="https://img.icons8.com/ios-filled/50/ffffff/new-post.png" alt="Email Icon" />
       <a href="mailto:info.newfoundliving@gmail.com">info.newfoundliving@gmail.com</a>
     </div>
     <div class="social-link">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook Icon">
-      <a href="https://www.facebook.com/profile.php?id=61577097797242" target="_blank">Facebook</a>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook Icon" />
+      <a href="https://www.facebook.com/profile.php?id=61577097797242" target="_blank" rel="noopener">Facebook</a>
     </div>
     <div class="privacy">We respect your privacy and never share your personal information.</div>
   </footer>
@@ -222,6 +240,7 @@
   </script>
 </body>
 </html>
+
 
 
 
