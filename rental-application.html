@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Newfound Living - Rental Application</title>
-  <meta name="description" content="Apply online for rental properties with Newfound Living." />
+  <title>Newfound Living - Pay Rent</title>
+  <meta name="description" content="Pay your rent to Newfound Living quickly and securely." />
   <link rel="icon" type="image/png" href="tinylogo1.png" />
   <style>
     :root {
@@ -12,8 +12,6 @@
       --white: #ffffff;
       --dark-overlay: rgba(0, 0, 0, 0.6);
       --form-bg: rgba(0, 0, 0, 0.85);
-      --input-bg: rgba(255 255 255 / 0.15);
-      --input-border: rgba(255 255 255 / 0.3);
     }
 
     * {
@@ -24,10 +22,8 @@
 
     body, html {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: url('city.png') no-repeat center center;
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center top;
+      background: url('city.png') no-repeat center center fixed;
+      background-size: cover;
       color: var(--white);
       min-height: 100vh;
       position: relative;
@@ -78,423 +74,120 @@
       position: relative;
       z-index: 1;
       max-width: 700px;
-      margin: 2rem auto 4rem;
+      margin: 2rem auto;
       padding: 2rem;
       background-color: var(--form-bg);
       border-radius: 10px;
       box-shadow: 0 0 15px rgba(0,0,0,0.6);
-      color: var(--white);
+      text-align: center;
     }
 
     h1 {
       margin-bottom: 1.5rem;
       font-family: Georgia, serif;
-      text-align: center;
     }
 
-    form label {
-      display: block;
-      margin-bottom: 0.3rem;
-      font-weight: 600;
-      font-size: 0.95rem;
-    }
-
-    form input[type="text"],
-    form input[type="email"],
-    form input[type="date"],
-    form input[type="tel"],
-    form textarea {
-      width: 100%;
-      padding: 0.5rem 0.75rem;
-      margin-bottom: 1rem;
-      border-radius: 6px;
-      border: 1px solid var(--input-border);
-      background-color: var(--input-bg);
-      color: var(--white);
-      font-size: 1rem;
-      font-family: inherit;
-    }
-
-    form textarea {
-      resize: vertical;
-      min-height: 80px;
-    }
-
-    form input[type="checkbox"],
-    form input[type="radio"] {
-      margin-right: 0.4rem;
-      transform: scale(1.1);
-      vertical-align: middle;
-    }
-
-    .checkbox-group {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      margin-bottom: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .checkbox-group label {
-      margin: 0;
-      font-weight: normal;
-      font-size: 0.95rem;
-      cursor: pointer;
-      color: var(--white);
-    }
-
-    fieldset {
-      border: none;
-      margin-bottom: 1.5rem;
-    }
-
-    legend {
-      font-weight: bold;
-      margin-bottom: 0.75rem;
+    .email-box {
+      border: 2px solid var(--green);
+      background-color: rgba(255, 255, 255, 0.05);
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem auto 2rem;
+      max-width: 90%;
       font-size: 1.1rem;
-      border-bottom: 1px solid var(--green);
-      padding-bottom: 0.3rem;
     }
 
-    button {
+    .copy-btn {
       background-color: var(--green);
       color: var(--white);
       border: none;
-      padding: 0.75rem 1.5rem;
+      padding: 0.5rem 1rem;
       font-size: 1rem;
-      border-radius: 8px;
+      border-radius: 5px;
       cursor: pointer;
-      font-weight: bold;
-      width: 100%;
-      max-width: 300px;
-      margin: 1rem auto 0;
-      display: block;
-      transition: background-color 0.3s;
+      margin-top: 0.5rem;
     }
 
-    button:hover {
+    .copy-btn:hover {
       background-color: #388e3c;
     }
 
-    #thank-you-rental {
-      display: none;
-      margin-top: 1rem;
-      font-size: 1.1rem;
-      color: lightgreen;
+    .site-footer {
+      background-color: rgba(0, 0, 0, 0.4);
+      padding: 1rem 1.5rem;
       text-align: center;
-    }
-
-    footer {
-      position: relative;
-      z-index: 1;
-      margin-top: 3rem;
       font-size: 1rem;
       color: #ffffff;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      text-align: center;
-      gap: 0.5rem;
-      padding: 0.75rem 1rem;
+      gap: 0.75rem;
       border-radius: 8px;
       max-width: fit-content;
-      margin-left: auto;
-      margin-right: auto;
-      background-color: rgba(0, 0, 0, 0.4);
+      margin: 3rem auto 2rem;
+      position: relative;
+      z-index: 1;
     }
 
-    footer a {
+    .site-footer a {
       color: #ffffff;
-      text-decoration: underline;
-      margin-left: 0.25rem;
-      font-size: 1rem;
+      text-decoration: none;
       font-weight: 500;
       display: inline-flex;
       align-items: center;
-      gap: 0.3rem;
+      gap: 0.4rem;
+      transition: color 0.3s ease;
     }
 
-    .social-link, .email-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.25rem;
+    .site-footer a:hover {
+      color: #90ee90;
     }
 
-    .social-link img, .email-link img {
-      width: 16px;
-      height: 16px;
-      filter: invert(100%) brightness(200%);
-      user-select: none;
-    }
-
-    .privacy {
-      margin-top: 1rem;
-      font-size: 0.9rem;
-      color: #dddddd;
-      text-align: center;
-    }
-
-    /* Responsive */
-    @media (max-width: 800px) {
-      .container {
-        margin: 2rem 1rem 6rem;
-      }
+    .site-footer .icon {
+      width: 18px;
+      height: 18px;
+      vertical-align: middle;
     }
   </style>
 </head>
 <body>
   <div class="overlay"></div>
 
-  <!-- Header logo and navigation -->
   <img src="logo-transparent.png" alt="Newfound Living Logo" class="logo" />
   <nav aria-label="Primary navigation">
     <a href="index.html">Get Updates</a>
-    <a href="rental-application.html" aria-current="page">Rental Application</a>
-    <a href="pay-rent.html">Pay Rent</a>
+    <a href="rental-application.html">Rental Application</a>
+    <a href="pay-rent.html" aria-current="page">Pay Rent</a>
   </nav>
 
-  <div class="container" role="main" aria-label="Rental Application Form">
-    <h1>Rental Application</h1>
-    <form id="rental-form" action="https://formspree.io/f/xldnwbqq" method="POST" novalidate>
-      <!-- Property Details -->
-      <fieldset>
-        <legend>Property Details</legend>
-        <label for="property-address">Property Address</label>
-        <input type="text" id="property-address" name="property_address" required placeholder="e.g., 123 Main St" />
-
-        <div class="checkbox-group" role="group" aria-label="Rental Unit">
-          <label><input type="checkbox" name="rental_unit_main" value="Main Unit" /> Main Unit</label>
-          <label><input type="checkbox" name="rental_unit_basement" value="Basement Apartment" /> Basement Apartment</label>
-          <label>
-            <input type="checkbox" name="rental_unit_other" value="Other" /> Other:
-            <input type="text" name="rental_unit_other_text" placeholder="Specify" style="width: 120px; display: inline-block;" />
-          </label>
-        </div>
-
-        <label for="move-in-date">Desired Move-in Date</label>
-        <input type="date" id="move-in-date" name="move_in_date" required />
-      </fieldset>
-
-      <!-- Applicant Information -->
-      <fieldset>
-        <legend>Applicant Information</legend>
-
-        <label for="full-name">Full Name</label>
-        <input type="text" id="full-name" name="full_name" required />
-
-        <label for="dob">Date of Birth</label>
-        <input type="date" id="dob" name="date_of_birth" required />
-
-        <label for="phone">Phone Number</label>
-        <input type="tel" id="phone" name="phone_number" required />
-
-        <label for="email">Email Address</label>
-        <input type="email" id="email" name="email_address" required />
-
-        <label for="current-address">Current Address</label>
-        <input type="text" id="current-address" name="current_address" required />
-
-        <label for="landlord-name">Landlord’s Name</label>
-        <input type="text" id="landlord-name" name="landlord_name" />
-
-        <label for="landlord-phone">Landlord’s Phone</label>
-        <input type="tel" id="landlord-phone" name="landlord_phone" />
-
-        <label for="reason-leaving">Reason for Leaving</label>
-        <textarea id="reason-leaving" name="reason_for_leaving"></textarea>
-
-        <label for="length-tenancy">Length of Tenancy</label>
-        <input type="text" id="length-tenancy" name="length_of_tenancy" placeholder="e.g., 2 years" />
-      </fieldset>
-
-      <!-- Employment / Income Verification -->
-      <fieldset>
-        <legend>Employment / Income Verification</legend>
-
-        <label for="employer-name">Employer Name</label>
-        <input type="text" id="employer-name" name="employer_name" />
-
-        <label for="position">Position</label>
-        <input type="text" id="position" name="position" />
-
-        <label for="monthly-income">Monthly Income (Net)</label>
-        <input type="text" id="monthly-income" name="monthly_income" placeholder="e.g., $3000" />
-
-        <label for="employment-length">Length of Employment</label>
-        <input type="text" id="employment-length" name="length_of_employment" placeholder="e.g., 3 years" />
-
-        <label><input type="checkbox" name="proof_of_income" value="Yes" /> Proof of income attached (required for all adult tenants)</label>
-      </fieldset>
-
-      <!-- Additional Occupants -->
-      <fieldset>
-        <legend>Additional Occupants</legend>
-
-        <label for="occupant1">1. Name</label>
-        <input type="text" id="occupant1" name="additional_occupant_1" />
-
-        <label for="occupant2">2. Name</label>
-        <input type="text" id="occupant2" name="additional_occupant_2" />
-
-        <label for="occupant3">3. Name</label>
-        <input type="text" id="occupant3" name="additional_occupant_3" />
-      </fieldset>
-
-      <!-- Pets -->
-      <fieldset>
-        <legend>Pets</legend>
-        <label><input type="radio" name="pets" value="Yes" /> Yes</label>
-        <label><input type="radio" name="pets" value="No" checked /> No</label>
-        <label for="pet-details">If yes, type/size/breed</label>
-        <input type="text" id="pet-details" name="pet_details" placeholder="e.g., Small dog - Beagle" />
-      </fieldset>
-
-      <!-- Emergency Contact -->
-      <fieldset>
-        <legend>Emergency Contact</legend>
-
-        <label for="emergency-name">Name</label>
-        <input type="text" id="emergency-name" name="emergency_contact_name" />
-
-        <label for="emergency-phone">Phone</label>
-        <input type="tel" id="emergency-phone" name="emergency_contact_phone" />
-
-        <label for="emergency-relationship">Relationship to Applicant</label>
-        <input type="text" id="emergency-relationship" name="emergency_contact_relationship" />
-      </fieldset>
-
-      <!-- References -->
-      <fieldset>
-        <legend>References</legend>
-
-        <label for="reference1-name">1. Name</label>
-        <input type="text" id="reference1-name" name="reference_1_name" />
-
-        <label for="reference1-phone">1. Phone</label>
-        <input type="tel" id="reference1-phone" name="reference_1_phone" />
-
-        <label for="reference2-name">2. Name</label>
-        <input type="text" id="reference2-name" name="reference_2_name" />
-
-        <label for="reference2-phone">2. Phone</label>
-        <input type="tel" id="reference2-phone" name="reference_2_phone" />
-      </fieldset>
-
-      <!-- Declaration -->
-      <fieldset>
-        <legend>Declaration</legend>
-        <p>I declare that the information provided is true and complete. I understand that providing false information or failing to disclose relevant details may result in denial or termination of tenancy. I authorize Newfound Living Inc. to contact employers, landlords, and references to verify this application.</p>
-        <label for="signature">Signature</label>
-        <input type="text" id="signature" name="signature" required placeholder="Type your full name" />
-
-        <label for="date-signed">Date</label>
-        <input type="date" id="date-signed" name="date_signed" required />
-        
-        <label for="coapplicant-signature">Signature (Co-applicant, if applicable)</label>
-        <input type="text" id="coapplicant-signature" name="coapplicant_signature" placeholder="Type full name" />
-
-        <label for="coapplicant-date">Date</label>
-        <input type="date" id="coapplicant-date" name="coapplicant_date" />
-      </fieldset>
-
-      <!-- Office Use Only -->
-      <fieldset>
-        <legend>Office Use Only</legend>
-        <label for="application-received">Application Received</label>
-        <input type="date" id="application-received" name="application_received" />
-
-        <label>Interviewed</label>
-        <label><input type="radio" name="interviewed" value="Yes" /> Yes</label>
-        <label><input type="radio" name="interviewed" value="No" /> No</label>
-
-        <label>Approved</label>
-        <label><input type="radio" name="approved" value="Yes" /> Yes</label>
-        <label><input type="radio" name="approved" value="No" /> No</label>
-
-        <label for="notes">Notes</label>
-        <textarea id="notes" name="notes"></textarea>
-      </fieldset>
-
-      <button type="submit">Submit Application</button>
-      <p id="thank-you-rental" role="alert" aria-live="polite"></p>
-    </form>
+  <div class="container">
+    <h1>Pay Rent</h1>
+    <p>We can only accept rent via e-transfer at this time. Please copy and paste the email address below for your transfers.</p>
+    <div class="email-box">
+      <div id="rent-email">newfoundlivingmanagement@gmail.com</div>
+      <button class="copy-btn" onclick="copyEmail()">Copy Email</button>
+    </div>
   </div>
 
-  <footer>
-    <div class="email-link">
-      <img src="email-icon.svg" alt="" aria-hidden="true" />
-      <a href="mailto:newfoundlivingmanagement@gmail.com">newfoundlivingmanagement@gmail.com</a>
-    </div>
-    <div class="social-link">
-      <a href="https://www.facebook.com/profile.php?id=61577097797242" target="_blank" rel="noopener" aria-label="Facebook page">
-        <img src="facebook-icon.svg" alt="" aria-hidden="true" />
-        Facebook
-      </a>
-    </div>
-    <div class="privacy">© 2025 Newfound Living | All rights reserved.</div>
+  <footer class="site-footer">
+    <a href="mailto:info@newfoundliving.ca" class="email-link" aria-label="Send email to Newfound Living">
+      <img src="https://www.svgrepo.com/download/51203/email.svg" alt="Email Icon" class="icon" /> info@newfoundliving.ca
+    </a>
+
+    <a href="https://www.facebook.com/profile.php?id=61577097797242" target="_blank" rel="noopener" class="social-link" aria-label="Visit our Facebook page">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_icon.svg" alt="Facebook Icon" class="icon" /> Facebook
+    </a>
+
+    <div class="privacy">© 2025 Newfound Living | We never share or sell your information.</div>
   </footer>
 
   <script>
-    // Optional: handle form submission with a thank you message without page reload
-    const form = document.getElementById('rental-form');
-    const thankYou = document.getElementById('thank-you-rental');
-
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const formData = new FormData(form);
-      try {
-        const response = await fetch(form.action, {
-          method: form.method,
-          body: formData,
-          headers: { 'Accept': 'application/json' }
-        });
-        if (response.ok) {
-          thankYou.textContent = "Thank you for submitting your rental application!";
-          form.reset();
-        } else {
-          thankYou.textContent = "Oops! There was a problem submitting your form.";
-        }
-      } catch {
-        thankYou.textContent = "Oops! There was a problem submitting your form.";
-      }
-    });
-  </script>
-</body>
-</html>
-        <input type="text" id="coapplicant-signature" name="coapplicant_signature" placeholder="Type full name or leave blank" />
-
-        <label for="coapplicant-signature-date">Co-applicant Date</label>
-        <input type="date" id="coapplicant-signature-date" name="coapplicant_signature_date" />
-      </fieldset>
-
-      <button type="submit">Submit Application</button>
-    </form>
-    <div id="thank-you-rental" role="alert" aria-live="polite">Thank you for submitting your application. We will review it and contact you shortly.</div>
-  </div>
-
-  <footer>
-    <a href="mailto:info.newfoundliving@gmail.com" class="footer-link" aria-label="Email Newfound Living">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 2v.511l-8 5.01-8-5.01V6h16zm-16 12V9.99l7.552 4.722a.5.5 0 0 0 .896 0L20 9.989V18H4z"/></svg>
-      info.newfoundliving@gmail.com
-    </a>
-    <a href="https://www.facebook.com/profile.php?id=61577097797242" target="_blank" rel="noopener noreferrer" class="footer-link" aria-label="Visit Newfound Living on Facebook">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M22.675 0h-21.35C.596 0 0 .592 0 1.322v21.357C0 23.408.595 24 1.325 24h11.495v-9.294H9.692v-3.622h3.128V8.41c0-3.1 1.894-4.788 4.659-4.788 1.325 0 2.466.099 2.797.142v3.24l-1.918.001c-1.504 0-1.796.716-1.796 1.767v2.318h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.324-.592 1.324-1.322V1.322C24 .592 23.404 0 22.675 0z"/></svg>
-      Facebook
-    </a>
-    <div class="privacy">© 2025 Newfound Living | All rights reserved.</div>
-  </footer>
-
-  <script>
-    // The copyEmail function is not used on this page, but can remain if needed for future features.
-    /*
     function copyEmail() {
       const email = document.getElementById('rent-email').innerText;
       navigator.clipboard.writeText(email).then(() => {
         alert('Email address copied to clipboard!');
       });
     }
-    */
   </script>
 </body>
 </html>
