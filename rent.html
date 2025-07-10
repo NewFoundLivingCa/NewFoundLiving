@@ -4,27 +4,29 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Newfound Living - Pay Rent</title>
+  <meta name="description" content="Pay rent online easily and securely." />
   <link rel="icon" type="image/png" href="tinylogo1.png" />
   <style>
     :root {
       --green: #2e7d32;
       --white: #ffffff;
       --dark-overlay: rgba(0, 0, 0, 0.6);
+      --form-bg: rgba(0, 0, 0, 0.85);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
     body, html {
-      margin: 0; padding: 0;
-      height: 100%;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      min-height: 100vh;
       background: url('city.png') no-repeat center center;
       background-size: cover;
       color: var(--white);
       position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 2rem;
     }
 
     .overlay {
@@ -37,70 +39,126 @@
     .container {
       position: relative;
       z-index: 1;
-      background: rgba(0,0,0,0.85);
-      padding: 2.5rem 3rem;
-      border-radius: 12px;
-      max-width: 480px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.7);
+      max-width: 700px;
+      margin: 3rem auto 6rem;
+      padding: 2rem 1rem 3rem;
+      background-color: var(--form-bg);
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 0 15px rgba(0,0,0,0.6);
+    }
+
+    .logo {
+      width: 260px;
+      margin: 0 auto 1.25rem;
     }
 
     h1 {
-      margin-bottom: 1rem;
-      font-size: 2rem;
       font-family: Georgia, serif;
+      font-size: 2rem;
+      margin-bottom: 1rem;
     }
 
-    p {
-      font-size: 1.1rem;
-      line-height: 1.5;
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
       margin-bottom: 2rem;
     }
 
-    .email {
-      font-weight: bold;
-      font-size: 1.2rem;
-      color: var(--green);
-      background-color: #fff;
-      padding: 0.4rem 0.8rem;
-      border-radius: 6px;
-      display: inline-block;
-      user-select: all;
-      cursor: pointer;
-      transition: background-color 0.3s;
+    nav a {
+      color: var(--white);
       text-decoration: none;
-      color: var(--green);
+      font-weight: bold;
+      background: var(--green);
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      transition: background-color 0.3s;
     }
 
-    .email:hover {
-      background-color: #dcedc8;
+    nav a:hover, nav a:focus {
+      background: #388e3c;
+      outline: none;
+    }
+
+    iframe {
+      width: 100%;
+      height: 600px;
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.5);
     }
 
     footer {
-      margin-top: 2rem;
+      margin-top: 3rem;
+      font-size: 1rem;
+      color: var(--white);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      max-width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    footer a {
+      color: var(--white);
+      text-decoration: underline;
+      font-weight: 500;
+    }
+
+    .social-link, .email-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .social-link img, .email-link img {
+      width: 16px;
+      height: 16px;
+    }
+
+    .privacy {
       font-size: 0.9rem;
-      color: #ccc;
+      color: #dddddd;
+      text-align: center;
+      margin-top: 1rem;
     }
   </style>
 </head>
 <body>
   <div class="overlay"></div>
-  <div class="container" role="main" aria-label="Rent Payment Information">
+
+  <div class="container" role="main" aria-label="Pay Rent Section">
+    <img src="logo-transparent.png" alt="Newfound Living Logo" class="logo" />
     <h1>Pay Rent Online</h1>
-    <p>
-      We currently accept rent payments via e-Transfer only.<br />
-      Please send your rent to the following email address:
-    </p>
-    <a href="mailto:newfoundlivingmanagement@gmail.com" class="email" aria-label="Email for rent e-Transfer">
-      newfoundlivingmanagement@gmail.com
-    </a>
-    <p style="margin-top: 1.5rem;">
-      Please include your full name and rental property address in the message or notes.<br />
-      Contact us if you have any questions.
-    </p>
+
+    <nav aria-label="Primary navigation">
+      <a href="index.html">Get Updates</a>
+      <a href="rental-application.html">Rental Application</a>
+      <a href="pay-rent.html" aria-current="page">Pay Rent</a>
+    </nav>
+
+    <!-- Embed payrent.com or link if embedding not allowed -->
+    <iframe src="https://www.payrent.com/" title="Pay Rent Online"></iframe>
   </div>
 
   <footer>
-    &copy; 2025 Newfound Living | All rights reserved.
+    <div class="email-link">
+      <img src="https://img.icons8.com/ios-filled/50/ffffff/new-post.png" alt="Email Icon" />
+      <a href="mailto:info.newfoundliving@gmail.com">info.newfoundliving@gmail.com</a>
+    </div>
+    <div class="social-link">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook Icon" />
+      <a href="https://www.facebook.com/profile.php?id=61577097797242" target="_blank" rel="noopener">Facebook</a>
+    </div>
+    <div class="privacy">We respect your privacy and never share your personal information.</div>
   </footer>
 </body>
 </html>
