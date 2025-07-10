@@ -23,7 +23,9 @@
     body, html {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: url('city.png') no-repeat center center;
-      background-size: cover;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center top;
       color: var(--white);
       min-height: 100vh;
       position: relative;
@@ -74,12 +76,13 @@
       position: relative;
       z-index: 1;
       max-width: 700px;
-      margin: 2rem auto;
+      margin: 2rem auto 4rem;
       padding: 2rem;
       background-color: var(--form-bg);
       border-radius: 10px;
       box-shadow: 0 0 15px rgba(0,0,0,0.6);
       text-align: center;
+      color: var(--white);
     }
 
     h1 {
@@ -95,6 +98,8 @@
       margin: 1rem auto 2rem;
       max-width: 90%;
       font-size: 1.1rem;
+      display: inline-block;
+      user-select: all;
     }
 
     .copy-btn {
@@ -106,6 +111,9 @@
       border-radius: 5px;
       cursor: pointer;
       margin-top: 0.5rem;
+      display: inline-block;
+      vertical-align: middle;
+      margin-left: 1rem;
     }
 
     .copy-btn:hover {
@@ -113,21 +121,61 @@
     }
 
     footer {
-      margin-top: 2rem;
+      position: relative;
+      z-index: 1;
+      margin-top: 3rem;
+      font-size: 1rem;
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       text-align: center;
-      font-size: 0.95rem;
-      color: #cccccc;
+      gap: 0.5rem;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      max-width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+      background-color: rgba(0, 0, 0, 0.4);
     }
 
-    .footer-email, .footer-facebook {
-      margin-top: 0.5rem;
+    footer a {
+      color: #ffffff;
+      text-decoration: underline;
+      margin-left: 0.25rem;
+      font-size: 1rem;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
     }
 
-    .footer-facebook img {
-      vertical-align: middle;
-      width: 18px;
-      height: 18px;
-      margin-right: 5px;
+    .social-link, .email-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .social-link img, .email-link img {
+      width: 16px;
+      height: 16px;
+      filter: invert(100%) brightness(200%);
+      user-select: none;
+    }
+
+    .privacy {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: #dddddd;
+      text-align: center;
+    }
+
+    /* Responsive */
+    @media (max-width: 800px) {
+      .container {
+        margin: 2rem 1rem 6rem;
+      }
     }
   </style>
 </head>
@@ -145,22 +193,25 @@
   <div class="container">
     <h1>Pay Rent</h1>
     <p>We can only accept rent via e-transfer at this time. Please copy and paste the email address below for your transfers.</p>
-    <div class="email-box">
-      <div id="rent-email">newfoundlivingmanagement@gmail.com</div>
+    <div>
+      <span class="email-box" id="rent-email">newfoundlivingmanagement@gmail.com</span>
       <button class="copy-btn" onclick="copyEmail()">Copy Email</button>
     </div>
 
-      <footer>
-    <div class="email-link">
-      <img src="https://img.icons8.com/ios-filled/50/ffffff/new-post.png" alt="Email Icon" />
-      <a href="mailto:info.newfoundliving@gmail.com">info.newfoundliving@gmail.com</a>
-    </div>
-    <div class="social-link">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook Icon" />
-      <a href="https://www.facebook.com/profile.php?id=61577097797242" target="_blank" rel="noopener">Facebook</a>
-    </div>
-    <div class="privacy">We respect your privacy and never share your personal information.</div>
-  </footer>
+    <footer>
+      <div class="email-link">
+        <img src="email-icon.svg" alt="" aria-hidden="true" />
+        <a href="mailto:newfoundlivingmanagement@gmail.com">newfoundlivingmanagement@gmail.com</a>
+      </div>
+      <div class="social-link">
+        <a href="https://www.facebook.com/profile.php?id=61577097797242" target="_blank" rel="noopener" aria-label="Facebook page">
+          <img src="facebook-icon.svg" alt="" aria-hidden="true" />
+          Facebook
+        </a>
+      </div>
+      <div class="privacy">© 2025 Newfound Living | All rights reserved.</div>
+    </footer>
+  </div>
 
   <script>
     function copyEmail() {
