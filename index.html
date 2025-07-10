@@ -46,7 +46,7 @@
     .container {
       position: relative;
       z-index: 1;
-      max-width: 700px;
+      max-width: 900px;
       margin: 3rem auto;
       padding: 2rem 1rem 3rem;
       text-align: center;
@@ -88,40 +88,34 @@
       border-radius: 5px;
     }
 
-    form {
+    .form-box {
       text-align: left;
-      max-width: 600px;
-      margin: auto;
+      max-width: 800px;
+      margin: 2rem auto;
       color: var(--white);
       background-color: var(--form-bg);
-      padding: 1.5rem 2rem 2rem;
+      padding: 2rem;
       border-radius: 10px;
       box-shadow: 0 0 15px rgba(0,0,0,0.6);
     }
 
-    label {
+    .form-box label {
       display: block;
-      margin-bottom: 0.3rem;
-      font-weight: 600;
-      font-size: 0.95rem;
+      margin-top: 1rem;
     }
 
-    input[type="text"],
-    input[type="email"],
-    textarea {
+    .form-box input[type="text"],
+    .form-box input[type="email"],
+    .form-box input[type="tel"],
+    .form-box input[type="date"],
+    .form-box textarea {
       width: 100%;
-      padding: 0.5rem 0.75rem;
-      margin-bottom: 1rem;
-      border-radius: 6px;
+      padding: 0.5rem;
+      margin-top: 0.25rem;
       border: 1px solid var(--input-border);
-      background-color: var(--input-bg);
+      border-radius: 4px;
+      background: var(--input-bg);
       color: var(--white);
-      font-size: 1rem;
-    }
-
-    textarea {
-      resize: vertical;
-      min-height: 80px;
     }
 
     button {
@@ -137,18 +131,6 @@
       max-width: 300px;
       margin: 1rem auto 0;
       display: block;
-    }
-
-    button:hover {
-      background-color: #388e3c;
-    }
-
-    #thank-you {
-      display: none;
-      margin-top: 1rem;
-      font-size: 1.1rem;
-      color: lightgreen;
-      text-align: center;
     }
 
     footer {
@@ -203,7 +185,7 @@
 
     <nav>
       <a href="#">Get Updates</a>
-      <a href="#">Rental Application</a>
+      <a href="#rental-form">Rental Application</a>
       <a href="https://www.payrent.com/" target="_blank">Pay Rent</a>
     </nav>
 
@@ -217,6 +199,106 @@
       <button type="submit">Submit</button>
     </form>
     <div id="thank-you">Thanks for signing up! We'll be in touch soon.</div>
+
+    <form class="form-box" id="rental-form" action="https://formspree.io/f/xldnwbqq" method="POST">
+      <h2 style="text-align:center; font-size: 1.5rem;">Newfound Living Residential Tenancy Application</h2>
+      <label>Property Address:</label>
+      <input type="text" name="property_address" required />
+
+      <label>Rental Unit:</label>
+      <label><input type="checkbox" name="unit_main" value="Main Unit" /> Main Unit</label>
+      <label><input type="checkbox" name="unit_basement" value="Basement Apartment" /> Basement Apartment</label>
+      <label><input type="checkbox" name="unit_other" value="Other" /> Other:</label>
+      <input type="text" name="unit_other_specify" />
+
+      <label>Desired Move-in Date:</label>
+      <input type="date" name="move_in_date" required />
+
+      <label>Full Name:</label>
+      <input type="text" name="full_name" required />
+
+      <label>Date of Birth:</label>
+      <input type="date" name="dob" required />
+
+      <label>Phone Number:</label>
+      <input type="tel" name="phone" required />
+
+      <label>Email Address:</label>
+      <input type="email" name="email" required />
+
+      <label>Current Address:</label>
+      <input type="text" name="current_address" required />
+
+      <label>Landlord’s Name:</label>
+      <input type="text" name="landlord_name" />
+
+      <label>Landlord’s Phone:</label>
+      <input type="tel" name="landlord_phone" />
+
+      <label>Reason for Leaving:</label>
+      <textarea name="reason_for_leaving"></textarea>
+
+      <label>Length of Tenancy:</label>
+      <input type="text" name="tenancy_length" />
+
+      <label>Employer Name:</label>
+      <input type="text" name="employer" />
+
+      <label>Position:</label>
+      <input type="text" name="position" />
+
+      <label>Monthly Income (Net):</label>
+      <input type="text" name="income" />
+
+      <label>Length of Employment:</label>
+      <input type="text" name="employment_length" />
+
+      <label><input type="checkbox" name="proof_income" /> Proof of income attached (required for all adult tenants)</label>
+
+      <label>Additional Occupants:</label>
+      <input type="text" name="occupant1" placeholder="Name 1" />
+      <input type="text" name="occupant2" placeholder="Name 2" />
+      <input type="text" name="occupant3" placeholder="Name 3" />
+
+      <label>Pets:</label>
+      <label><input type="radio" name="pets" value="Yes" /> Yes</label>
+      <label><input type="radio" name="pets" value="No" checked /> No</label>
+      <input type="text" name="pet_details" placeholder="Type/Size/Breed" />
+
+      <label>Emergency Contact Name:</label>
+      <input type="text" name="emergency_name" />
+
+      <label>Emergency Contact Phone:</label>
+      <input type="tel" name="emergency_phone" />
+
+      <label>Relationship to Applicant:</label>
+      <input type="text" name="relationship" />
+
+      <label>Reference 1:</label>
+      <input type="text" name="ref1_name" placeholder="Name" />
+      <input type="tel" name="ref1_phone" placeholder="Phone" />
+
+      <label>Reference 2:</label>
+      <input type="text" name="ref2_name" placeholder="Name" />
+      <input type="tel" name="ref2_phone" placeholder="Phone" />
+
+      <label>Declaration:</label>
+      <textarea name="declaration" rows="4">I declare that the information provided is true and complete. I authorize Newfound Living Inc. to contact employers, landlords, and references to verify this application.</textarea>
+
+      <label>Signature:</label>
+      <input type="text" name="signature" required />
+
+      <label>Date:</label>
+      <input type="date" name="signature_date" required />
+
+      <label>Co-applicant Signature:</label>
+      <input type="text" name="co_signature" />
+
+      <label>Date:</label>
+      <input type="date" name="co_signature_date" />
+
+      <button type="submit">Submit Application</button>
+    </form>
   </div>
 
   <footer>
@@ -240,4 +322,5 @@
   </script>
 </body>
 </html>
+
 
