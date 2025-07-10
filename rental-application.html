@@ -389,7 +389,7 @@
     <div id="thank-you-rental" role="alert" aria-live="polite">Thank you for submitting your application. We will review it and contact you shortly.</div>
   </div>
 
-  <footer>
+   <footer>
       <div class="footer-email" aria-label="Email address">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 2v.511l-8 5.01-8-5.01V6h16zm-16 12V9.99l7.552 4.722a.5.5 0 0 0 .896 0L20 9.989V18H4z"/></svg>
         info.newfoundliving@gmail.com
@@ -401,5 +401,14 @@
       <div class="privacy">© 2025 Newfound Living | All rights reserved.</div>
     </footer>
   </div>
+
+  <script>
+    function copyEmail() {
+      const email = document.getElementById('rent-email').innerText;
+      navigator.clipboard.writeText(email).then(() => {
+        alert('Email address copied to clipboard!');
+      });
+    }
+  </script>
 </body>
 </html>
