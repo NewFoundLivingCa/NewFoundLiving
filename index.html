@@ -1,4 +1,3 @@
-html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,184 +11,7 @@ html
   <meta property="og:url" content="https://newfoundliving.ca" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" href="tinylogo1.png" />
-  <style>
-    :root {
-      --green: #2e7d32;
-      --white: #ffffff;
-      --dark-overlay: rgba(0, 0, 0, 0.6);
-      --input-bg: rgba(255, 255, 255, 0.15);
-      --input-border: rgba(255, 255, 255, 0.3);
-      --form-bg: rgba(0, 0, 0, 0.85);
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body, html {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      min-height: 100vh;
-      background: url('city.png') no-repeat center center;
-      background-size: cover;
-      color: var(--white);
-      position: relative;
-    }
-
-    .overlay {
-      background: var(--dark-overlay);
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-    }
-
-    .container {
-      position: relative;
-      z-index: 1;
-      max-width: 500px;
-      margin: 3rem auto;
-      padding: 2rem 1rem 3rem;
-      text-align: center;
-    }
-
-    .logo {
-      width: 260px;
-      margin: 0 auto 1.25rem;
-      position: relative;
-      z-index: 1;
-    }
-
-    h1 {
-      font-size: 2rem;
-      font-family: Georgia, serif;
-      margin-bottom: 0.5rem;
-    }
-
-    h2 {
-      font-size: 1.1rem;
-      font-weight: normal;
-      margin-bottom: 1.5rem;
-      line-height: 1.4;
-    }
-
-    nav {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      margin-bottom: 2rem;
-    }
-
-    nav a {
-      color: var(--white);
-      text-decoration: none;
-      font-weight: bold;
-      background: var(--green);
-      padding: 0.5rem 1rem;
-      border-radius: 5px;
-    }
-
-    /* Form container with transparent background */
-    .form-box {
-      background-color: var(--form-bg);
-      padding: 1.5rem 1.5rem 2rem;
-      border-radius: 10px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.6);
-      margin: 0 auto;
-      max-width: 350px;
-      text-align: left;
-    }
-
-    label {
-      display: block;
-      margin-bottom: 0.25rem;
-      font-weight: 600;
-    }
-
-    input[type="email"],
-    textarea {
-      width: 100%;
-      padding: 0.5rem;
-      margin-bottom: 1rem;
-      border: 1px solid var(--input-border);
-      border-radius: 4px;
-      background: var(--input-bg);
-      color: var(--white);
-      font-family: inherit;
-      font-size: 1rem;
-      resize: vertical;
-    }
-
-    button {
-      background-color: var(--green);
-      color: var(--white);
-      border: none;
-      padding: 0.75rem 1.5rem;
-      font-size: 1rem;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
-      width: 100%;
-      max-width: 300px;
-      display: block;
-      margin: 0 auto;
-    }
-
-    #thank-you {
-      display: none;
-      margin-top: 1rem;
-      font-size: 1.1rem;
-      color: lightgreen;
-      text-align: center;
-    }
-
-    footer {
-      margin-top: 3rem;
-      font-size: 1rem;
-      color: #ffffff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      gap: 0.5rem;
-      padding: 0.75rem 1rem;
-      border-radius: 8px;
-      max-width: fit-content; /* This helps contain the background to its content */
-      margin-left: auto;
-      margin-right: auto;
-      background-color: rgba(0, 0, 0, 0.4);
-    }
-
-    footer a {
-      color: var(--white);
-      text-decoration: underline;
-      font-size: 1rem;
-      font-weight: 500;
-    }
-
-    .footer-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.25rem;
-      color: var(--white);
-      text-decoration: none; /* Remove underline for the link wrapper */
-    }
-
-    .footer-link svg {
-      width: 20px; /* Slightly larger icons */
-      height: 20px;
-      fill: var(--white); /* Ensures the SVG is white */
-      margin-right: 5px; /* Space between icon and text */
-    }
-
-    .privacy {
-      font-size: 0.9rem;
-      color: #dddddd;
-      text-align: center;
-      margin-top: 0.5rem;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="overlay"></div>
@@ -201,7 +23,7 @@ html
     <nav>
       <a href="#">Get Updates</a>
       <a href="rental-application.html">Rental Application</a>
-      <a href="rent.html">Pay Rent</a>
+      <a href="pay-rent.html">Pay Rent</a>
     </nav>
 
     <div class="form-box">
@@ -216,16 +38,31 @@ html
       </form>
       <div id="thank-you">Thanks for signing up! We'll be in touch soon.</div>
     </div>
-
-    <footer>
-      <a href="mailto:info.newfoundliving@gmail.com" class="footer-link" aria-label="Email Newfound Living">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 2v.511l-8 5.01-8-5.01V6h16zm-16 12V9.99l7.552 4.722a.5.5 0 0 0 .896 0L20 9.989V18H4z"/></svg>
-        info.newfoundliving@gmail.com
-      </a>
-      <a href="https://www.facebook.com/profile.php?id=61577097797242" target="_blank" rel="noopener noreferrer" class="footer-link" aria-label="Visit Newfound Living on Facebook">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M22.675 0h-21.35C.596 0 0 .592 0 1.322v21.357C0 23.408.595 24 1.325 24h11.495v-9.294H9.692v-3.622h3.128V8.41c0-3.1 1.894-4.788 4.659-4.788 1.325 0 2.466.099 2.797.142v3.24l-1.918.001c-1.504 0-1.796.716-1.796 1.767v2.318h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.324-.592 1.324-1.322V1.322C24 .592 23.404 0 22.675 0z"/></svg>
-        Facebook
-      </a>
-      <div class="privacy">© 2025 Newfound Living | All rights reserved.</div>
-    </footer>
   </div>
+
+  <footer>
+    <a href="mailto:info.newfoundliving@gmail.com" class="footer-link" aria-label="Email Newfound Living">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 2v.511l-8 5.01-8-5.01V6h16zm-16 12V9.99l7.552 4.722a.5.5 0 0 0 .896 0L20 9.989V18H4z"/></svg>
+      info.newfoundliving@gmail.com
+    </a>
+    <a href="https://www.facebook.com/profile.php?id=61577097797242" target="_blank" rel="noopener noreferrer" class="footer-link" aria-label="Visit Newfound Living on Facebook">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M22.675 0h-21.35C.596 0 0 .592 0 1.322v21.357C0 23.408.595 24 1.325 24h11.495v-9.294H9.692v-3.622h3.128V8.41c0-3.1 1.894-4.788 4.659-4.788 1.325 0 2.466.099 2.797.142v3.24l-1.918.001c-1.504 0-1.796.716-1.796 1.767v2.318h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.324-.592 1.324-1.322V1.322C24 .592 23.404 0 22.675 0z"/></svg>
+      Facebook
+    </a>
+    <div class="privacy">© 2025 Newfound Living | All rights reserved.</div>
+  </footer>
+
+  <script>
+    // This script for copyEmail is not currently used on this page based on the new footer structure.
+    // If you add an element with id 'rent-email' and a button to trigger it, this function will work.
+    /*
+    function copyEmail() {
+      const email = document.getElementById('rent-email').innerText;
+      navigator.clipboard.writeText(email).then(() => {
+        alert('Email address copied to clipboard!');
+      });
+    }
+    */
+  </script>
+</body>
+</html>
