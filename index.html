@@ -16,8 +16,8 @@
       --green: #2e7d32;
       --white: #ffffff;
       --dark-overlay: rgba(0, 0, 0, 0.6);
-      --input-bg: rgba(255 255 255 / 0.15);
-      --input-border: rgba(255 255 255 / 0.3);
+      --input-bg: rgba(255, 255, 255, 0.15);
+      --input-border: rgba(255, 255, 255, 0.3);
       --form-bg: rgba(0, 0, 0, 0.85);
     }
 
@@ -70,6 +70,22 @@
       font-weight: normal;
       margin-bottom: 2rem;
       line-height: 1.4;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    nav a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: bold;
+      background: var(--green);
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
     }
 
     form {
@@ -185,6 +201,12 @@
     <h1>Welcome to Newfound Living</h1>
     <h2>Our rental units are currently filled. Leave your email to be the first notified when availability opens.</h2>
 
+    <nav>
+      <a href="#">Get Updates</a>
+      <a href="#">Rental Application</a>
+      <a href="https://www.payrent.com/" target="_blank">Pay Rent</a>
+    </nav>
+
     <form id="notify-form" action="https://formspree.io/f/xldnwbqq" method="POST">
       <label for="notify-email">Your email address <span>*</span></label>
       <input type="email" name="email" id="notify-email" placeholder="you@example.com" required />
@@ -198,7 +220,6 @@
   </div>
 
   <footer>
-    <a href="https://www.payrent.com/" target="_blank">Pay Rent Online</a>
     <div class="privacy">We respect your privacy and never share your personal information.</div>
     <div class="email-link">
       <img src="https://img.icons8.com/ios-filled/50/ffffff/new-post.png" alt="Email Icon">
@@ -219,3 +240,4 @@
   </script>
 </body>
 </html>
+
