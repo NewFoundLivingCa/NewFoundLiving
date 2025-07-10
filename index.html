@@ -1,8 +1,9 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Newfound Living - Rental Properties in St. John's</title>
   <meta name="description" content="Quality rental properties in St. John's & surrounding areas. Local. Transparent. Reliable." />
   <meta property="og:title" content="Newfound Living – Rental Properties in St. John's" />
@@ -11,58 +12,265 @@
   <meta property="og:url" content="https://newfoundliving.ca" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" href="tinylogo1.png" />
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    :root {
+      --green: #2e7d32;
+      --white: #ffffff;
+      --dark-overlay: rgba(0, 0, 0, 0.5);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      min-height: 100vh;
+      background: url('city.png') no-repeat center center;
+      background-size: cover;
+      background-attachment: scroll;
+      color: var(--white);
+    }
+
+    .overlay {
+      background: var(--dark-overlay);
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 4rem 1rem 2rem;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    .logo {
+      width: 260px;
+      margin: 0 auto 1.25rem;
+    }
+
+    h1 {
+      font-size: 1.85rem;
+      font-family: Georgia, serif;
+      margin-bottom: 0.75rem;
+    }
+
+    h2 {
+      font-size: 1.2rem;
+      font-weight: normal;
+      margin-bottom: 2rem;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      max-width: 400px;
+      margin: auto;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 0.75rem;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+
+    button {
+      background-color: var(--green);
+      color: var(--white);
+      border: none;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    button:hover {
+      background-color: #388e3c;
+    }
+
+    .features {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-top: 3rem;
+      flex-wrap: nowrap;
+    }
+
+    .feature-box {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 1.5rem;
+      border-radius: 8px;
+      width: 32%;
+      min-width: 180px;
+      text-align: center;
+    }
+
+    .feature-box h3 {
+      margin: 1rem 0 0.5rem;
+      font-size: 1.2rem;
+    }
+
+    .feature-box p {
+      font-size: 0.95rem;
+      color: #ddd;
+    }
+
+    footer {
+      margin-top: 3rem;
+      font-size: 1rem;
+      color: #ffffff;
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      max-width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    footer a {
+      color: #ffffff;
+      text-decoration: underline;
+      margin-left: 0.25rem;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    .social-link, .email-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .social-link img, .email-link img {
+      width: 16px;
+      height: 16px;
+    }
+
+    .privacy {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: #dddddd;
+      text-align: center;
+    }
+
+    #thank-you {
+      display: none;
+      margin-top: 1.5rem;
+      font-size: 1.05rem;
+      color: lightgreen;
+    }
+
+    .rent-link a {
+      color: #ffffff;
+      font-weight: bold;
+      text-decoration: underline;
+      font-size: 1.05rem;
+    }
+
+    @media (max-width: 800px) {
+      footer {
+        background-color: rgba(0, 0, 0, 0.6);
+      }
+
+      .features {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .feature-box {
+        width: 80%;
+        margin-bottom: 1rem;
+      }
+    }
+  </style>
 </head>
 <body>
   <div class="overlay"></div>
   <div class="container">
-    <img src="logo-transparent.png" alt="Newfound Living Logo" class="logo" />
+    <img src="logo-transparent.png" alt="Newfound Living Logo" class="logo">
     <h1>Welcome to Newfound Living</h1>
-    <h2>Our rental units are currently filled. Leave your email to be the first notified when availability opens.</h2>
+    <h2>While all our rental units are currently filled, we’d love to keep you updated. Leave your email and be the first to know when a property becomes available.</h2>
 
-    <nav>
-      <a href="#">Get Updates</a>
-      <a href="rental-application.html">Rental Application</a>
-      <a href="pay-rent.html">Pay Rent</a>
-    </nav>
+    <form id="notify-form" action="https://formspree.io/f/xldnwbqq" method="POST">
+      <input type="email" name="email" placeholder="Your email address" required />
+      <textarea name="message" placeholder="Your message (optional)"></textarea>
+      <button type="submit">Get Updates</button>
+    </form>
 
-    <div class="form-box">
-      <form id="notify-form" action="https://formspree.io/f/xldnwbqq" method="POST">
-        <label for="notify-email">Your email address <span>*</span></label>
-        <input type="email" name="email" id="notify-email" placeholder="you@example.com" required />
+    <div id="thank-you">Thanks for signing up! We'll be in touch soon.</div>
 
-        <label for="notify-message">Your message (optional)</label>
-        <textarea name="message" id="notify-message" placeholder="Your message"></textarea>
-
-        <button type="submit">Submit</button>
-      </form>
-      <div id="thank-you">Thanks for signing up! We'll be in touch soon.</div>
+    <div class="features">
+      <div class="feature-box">
+        <div>🔧</div>
+        <h3>Stress-Free Renting</h3>
+        <p>Well-maintained homes with responsive service.</p>
+      </div>
+      <div class="feature-box">
+        <div>💡</div>
+        <h3>Transparent Pricing</h3>
+        <p>Fair rates with no hidden fees.</p>
+      </div>
+      <div class="feature-box">
+        <div>🏠</div>
+        <h3>Local Expertise</h3>
+        <p>Based in St. John's. We know the market.</p>
+      </div>
     </div>
+
+    <footer>
+      <div class="rent-link">💳 <a href="rent.html">Pay Rent Online</a></div>
+      <div>Locally owned and operated in St. John's & surrounding areas</div>
+      <div class="email-link">
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/new-post.png" alt="Email icon" />
+        <a href="mailto:info.newfoundliving@gmail.com">info.newfoundliving@gmail.com</a>
+      </div>
+      <div class="social-link">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook logo" />
+        <a href="https://www.facebook.com/profile.php?id=61577097797242" target="_blank">Visit our Facebook page</a>
+      </div>
+      <div class="privacy">We never share or sell your information. Your privacy is important to us.</div>
+    </footer>
   </div>
 
-  <footer>
-    <a href="mailto:info.newfoundliving@gmail.com" class="footer-link" aria-label="Email Newfound Living">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 2v.511l-8 5.01-8-5.01V6h16zm-16 12V9.99l7.552 4.722a.5.5 0 0 0 .896 0L20 9.989V18H4z"/></svg>
-      info.newfoundliving@gmail.com
-    </a>
-    <a href="https://www.facebook.com/profile.php?id=61577097797242" target="_blank" rel="noopener noreferrer" class="footer-link" aria-label="Visit Newfound Living on Facebook">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M22.675 0h-21.35C.596 0 0 .592 0 1.322v21.357C0 23.408.595 24 1.325 24h11.495v-9.294H9.692v-3.622h3.128V8.41c0-3.1 1.894-4.788 4.659-4.788 1.325 0 2.466.099 2.797.142v3.24l-1.918.001c-1.504 0-1.796.716-1.796 1.767v2.318h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.324-.592 1.324-1.322V1.322C24 .592 23.404 0 22.675 0z"/></svg>
-      Facebook
-    </a>
-    <div class="privacy">© 2025 Newfound Living | All rights reserved.</div>
-  </footer>
-
   <script>
-    // This script for copyEmail is not currently used on this page based on the new footer structure.
-    // If you add an element with id 'rent-email' and a button to trigger it, this function will work.
-    /*
-    function copyEmail() {
-      const email = document.getElementById('rent-email').innerText;
-      navigator.clipboard.writeText(email).then(() => {
-        alert('Email address copied to clipboard!');
-      });
-    }
-    */
+    const form = document.getElementById('notify-form');
+    const thankYou = document.getElementById('thank-you');
+
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const formData = new FormData(form);
+
+      try {
+        await fetch(form.action, {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        });
+        form.reset();
+        thankYou.style.display = 'block';
+      } catch (err) {
+        alert('Something went wrong. Please try again later.');
+      }
+    });
   </script>
 </body>
 </html>
