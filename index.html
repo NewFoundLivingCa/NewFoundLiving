@@ -12,160 +12,209 @@
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" href="tinylogo1.png" />
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f7f7f7;
+    :root {
+      --green: #2e7d32;
+      --white: #ffffff;
+      --dark-overlay: rgba(0, 0, 0, 0.6);
+      --input-bg: rgba(255 255 255 / 0.15);
+      --input-border: rgba(255 255 255 / 0.3);
+      --form-bg: rgba(0, 0, 0, 0.85);
+    }
+
+    * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
-    section {
+
+    body, html {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      min-height: 100vh;
+      background: url('city.png') no-repeat center center;
+      background-size: cover;
+      color: var(--white);
+      position: relative;
+    }
+
+    .overlay {
+      background: var(--dark-overlay);
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
       max-width: 700px;
       margin: 3rem auto;
-      background: #fff;
-      padding: 2rem;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    h2.property-heading {
+      padding: 2rem 1rem 3rem;
       text-align: center;
-      font-size: 1.5rem;
-      margin-bottom: 1.5rem;
     }
-    form label {
+
+    .logo {
+      width: 260px;
+      margin: 0 auto 1.25rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-family: Georgia, serif;
+      margin-bottom: 0.5rem;
+    }
+
+    h2 {
+      font-size: 1.1rem;
+      font-weight: normal;
+      margin-bottom: 2rem;
+      line-height: 1.4;
+    }
+
+    form {
+      text-align: left;
+      max-width: 600px;
+      margin: auto;
+      color: var(--white);
+      background-color: var(--form-bg);
+      padding: 1.5rem 2rem 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.6);
+    }
+
+    label {
       display: block;
-      margin: 0.75rem 0 0.25rem;
+      margin-bottom: 0.3rem;
+      font-weight: 600;
+      font-size: 0.95rem;
     }
-    form input, form textarea, form select {
+
+    input[type="text"],
+    input[type="email"],
+    textarea {
       width: 100%;
-      padding: 0.6rem;
+      padding: 0.5rem 0.75rem;
+      margin-bottom: 1rem;
+      border-radius: 6px;
+      border: 1px solid var(--input-border);
+      background-color: var(--input-bg);
+      color: var(--white);
       font-size: 1rem;
-      border-radius: 4px;
-      border: 1px solid #ccc;
     }
-    form button {
-      background-color: #2e7d32;
-      color: white;
+
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    button {
+      background-color: var(--green);
+      color: var(--white);
       border: none;
       padding: 0.75rem 1.5rem;
-      margin-top: 1rem;
-      border-radius: 6px;
       font-size: 1rem;
+      border-radius: 8px;
       cursor: pointer;
-    }
-    form button:hover {
-      background-color: #1b5e20;
-    }
-    #thank-you, #thank-you-rental {
-      text-align: center;
-      margin-top: 1.5rem;
       font-weight: bold;
-      color: green;
+      width: 100%;
+      max-width: 300px;
+      margin: 1rem auto 0;
+      display: block;
     }
-    footer {
-      background-color: #333;
-      color: #fff;
-      padding: 2rem 1rem;
+
+    button:hover {
+      background-color: #388e3c;
+    }
+
+    #thank-you {
+      display: none;
+      margin-top: 1rem;
+      font-size: 1.1rem;
+      color: lightgreen;
       text-align: center;
     }
+
+    footer {
+      margin-top: 3rem;
+      font-size: 1rem;
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      max-width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+
     footer a {
-      color: #fff;
-      text-decoration: none;
-      margin: 0 0.5rem;
+      color: #ffffff;
+      text-decoration: underline;
+      font-size: 1rem;
+      font-weight: 500;
     }
-    footer img {
-      vertical-align: middle;
-      width: 20px;
-      height: 20px;
-      margin-right: 0.5rem;
-    }
-    .icon-text {
+
+    .social-link, .email-link {
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
-      margin: 0.25rem auto;
-      justify-content: center;
+      gap: 0.25rem;
+    }
+
+    .social-link img, .email-link img {
+      width: 16px;
+      height: 16px;
+    }
+
+    .privacy {
+      font-size: 0.9rem;
+      color: #dddddd;
+      text-align: center;
     }
   </style>
 </head>
 <body>
-  <!-- Get Updates Form -->
-  <section id="notify-form-section" role="tabpanel" aria-labelledby="tab-notify">
-    <form id="notify-form" action="https://formspree.io/f/xldnwbqq" method="POST" novalidate>
-      <label for="notify-email">Your email address <span aria-hidden="true">*</span></label>
+  <div class="overlay"></div>
+  <div class="container">
+    <img src="logo-transparent.png" alt="Newfound Living Logo" class="logo" />
+    <h1>Welcome to Newfound Living</h1>
+    <h2>Our rental units are currently filled. Leave your email to be the first notified when availability opens.</h2>
+
+    <form id="notify-form" action="https://formspree.io/f/xldnwbqq" method="POST">
+      <label for="notify-email">Your email address <span>*</span></label>
       <input type="email" name="email" id="notify-email" placeholder="you@example.com" required />
 
       <label for="notify-message">Your message (optional)</label>
       <textarea name="message" id="notify-message" placeholder="Your message"></textarea>
 
-      <button type="submit" id="submit-button">Submit</button>
+      <button type="submit">Submit</button>
     </form>
-    <div id="thank-you" role="alert" aria-live="polite">Thanks for signing up! We'll be in touch soon.</div>
-  </section>
+    <div id="thank-you">Thanks for signing up! We'll be in touch soon.</div>
+  </div>
 
-  <!-- Rental Application Section (example heading shown) -->
-  <section id="rental-form-section" hidden>
-    <h2 class="property-heading">Rental Property Details</h2>
-    <!-- Rental form elements go here -->
-  </section>
-
-  <footer role="contentinfo" aria-label="Footer">
-    <div class="icon-text">
-      <a href="https://www.payrent.com/" target="_blank" rel="noopener">
-        Pay Rent Online
-      </a>
-    </div>
-    <div class="icon-text">
+  <footer>
+    <a href="https://www.payrent.com/" target="_blank">Pay Rent Online</a>
+    <div class="privacy">We respect your privacy and never share your personal information.</div>
+    <div class="email-link">
       <img src="https://img.icons8.com/ios-filled/50/ffffff/new-post.png" alt="Email Icon">
       <a href="mailto:info.newfoundliving@gmail.com">info.newfoundliving@gmail.com</a>
     </div>
-    <div class="icon-text">
+    <div class="social-link">
       <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook Icon">
       <a href="https://www.facebook.com/profile.php?id=61577097797242" target="_blank">Facebook</a>
-    </div>
-    <div style="margin-top: 1rem; font-size: 0.95rem; color: #ccc;">
-      We respect your privacy and never share your personal information.
     </div>
   </footer>
 
   <script>
-    const tabs = document.querySelectorAll('.tab');
-    const notifySection = document.getElementById('notify-form-section');
-    const rentalSection = document.getElementById('rental-form-section');
-
-    tabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        if(tab.classList.contains('active')) return;
-
-        tabs.forEach(t => {
-          t.classList.remove('active');
-          t.setAttribute('aria-selected', 'false');
-        });
-        tab.classList.add('active');
-        tab.setAttribute('aria-selected', 'true');
-
-        if(tab.id === 'tab-notify') {
-          notifySection.hidden = false;
-          rentalSection.hidden = true;
-        } else {
-          notifySection.hidden = true;
-          rentalSection.hidden = false;
-        }
-      });
-    });
-
     document.getElementById('notify-form').addEventListener('submit', function(e) {
       e.preventDefault();
       this.style.display = 'none';
       document.getElementById('thank-you').style.display = 'block';
-    });
-
-    document.getElementById('notify-email').addEventListener('input', function () {
-      const button = document.getElementById('submit-button');
-      if (this.value.trim().length > 0) {
-        button.textContent = 'Submit';
-      } else {
-        button.textContent = 'Submit';
-      }
     });
   </script>
 </body>
