@@ -18,6 +18,7 @@
       --dark-overlay: rgba(0, 0, 0, 0.6);
       --input-bg: rgba(255 255 255 / 0.15);
       --input-border: rgba(255 255 255 / 0.3);
+      --form-bg: rgba(0, 0, 0, 0.85);
     }
 
     * {
@@ -35,14 +36,14 @@
       position: relative;
     }
 
-    /* Logo watermark behind text */
+    /* Logo watermark behind entire page except form background */
     .logo-watermark {
       position: fixed;
       top: 50%;
       left: 50%;
       width: 400px;
       max-width: 80vw;
-      opacity: 0.1;
+      opacity: 0.08;
       transform: translate(-50%, -50%);
       pointer-events: none;
       user-select: none;
@@ -63,8 +64,7 @@
       max-width: 700px;
       margin: 3rem auto 6rem;
       padding: 2rem 1rem 3rem;
-      background-color: rgba(0,0,0,0.4);
-      border-radius: 10px;
+      /* No background here - forms will have their own */
       text-align: center;
     }
 
@@ -120,6 +120,10 @@
       max-width: 600px;
       margin: auto;
       color: var(--white);
+      background-color: var(--form-bg);
+      padding: 1.5rem 2rem 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.6);
     }
 
     label {
@@ -152,6 +156,12 @@
     }
 
     input[type="checkbox"] {
+      margin-right: 0.4rem;
+      transform: scale(1.1);
+      vertical-align: middle;
+    }
+
+    input[type="radio"] {
       margin-right: 0.4rem;
       transform: scale(1.1);
       vertical-align: middle;
@@ -257,6 +267,8 @@
       gap: 1rem;
       margin-top: 3rem;
       flex-wrap: nowrap;
+      z-index: 1;
+      position: relative;
     }
 
     .feature-box {
@@ -332,7 +344,10 @@
           <div class="checkbox-group" role="group" aria-label="Rental Unit">
             <label><input type="checkbox" name="rental_unit_main" value="Main Unit" /> Main Unit</label>
             <label><input type="checkbox" name="rental_unit_basement" value="Basement Apartment" /> Basement Apartment</label>
-            <label><input type="checkbox" name="rental_unit_other" value="Other" /> Other: <input type="text" name="rental_unit_other_text" placeholder="Specify" style="width: 120px; display: inline-block;" /></label>
+            <label>
+              <input type="checkbox" name="rental_unit_other" value="Other" /> Other:
+              <input type="text" name="rental_unit_other_text" placeholder="Specify" style="width: 120px; display: inline-block;" />
+            </label>
           </div>
 
           <label for="move-in-date">Desired Move-in Date</label>
@@ -403,9 +418,124 @@
 
         <fieldset>
           <legend><strong>Pets</strong></legend>
-          <label>
-            <input type="radio" name="pets" value="Yes" /> Yes
-          </label>
-          <label>
-            <input type="radio" name="pets" value="No" checked /> No
-          </
+          <label><input type="radio" name="pets" value="Yes" /> Yes</label>
+          <label><input type="radio" name="pets" value="No" checked /> No</label>
+          <label for="pet-details">If yes, type/size/breed</label>
+          <input type="text" id="pet-details" name="pet_details" placeholder="e.g., Small dog - Beagle" />
+        </fieldset>
+
+        <fieldset>
+          <legend><strong>Emergency Contact</strong></legend>
+
+          <label for="emergency-name">Name</label>
+          <input type="text" id="emergency-name" name="emergency_contact_name" />
+
+          <label for="emergency-phone">Phone</label>
+          <input type="tel" id="emergency-phone" name="emergency_contact_phone" />
+
+          <label for="emergency-relationship">Relationship to Applicant</label>
+          <input type="text" id="emergency-relationship" name="emergency_contact_relationship" />
+        </fieldset>
+
+        <fieldset>
+          <legend><strong>References</strong></legend>
+
+          <label for="reference1-name">1. Name</label>
+          <input type="text" id="reference1-name" name="reference_1_name" />
+
+          <label for="reference1-phone">1. Phone</label>
+          <input type="tel" id="reference1-phone" name="reference_1_phone" />
+
+          <label for="reference2-name">2. Name</label>
+          <input type="text" id="reference2-name" name="reference_2_name" />
+
+          <label for="reference2-phone">2. Phone</label>
+          <input type="tel" id="reference2-phone" name="reference_2_phone" />
+        </fieldset>
+
+        <fieldset>
+          <legend><strong>Declaration</strong></legend>
+
+          <p>I declare that the information provided is true and complete. I understand that providing false information or failing to disclose relevant details may result in denial or termination of tenancy. I authorize Newfound Living Inc. to contact employers, landlords, and references to verify this application.</p>
+
+          <label for="applicant-signature">Signature</label>
+          <input type="text" id="applicant-signature" name="applicant_signature" placeholder="Type your full name" required />
+
+          <label for="applicant-signature-date">Date</label>
+          <input type="date" id="applicant-signature-date" name="applicant_signature_date" required />
+
+          <label for="coapplicant-signature">Co-applicant Signature (if applicable)</label>
+          <input type="text" id="coapplicant-signature" name="coapplicant_signature" placeholder="Type full name or leave blank" />
+
+          <label for="coapplicant-signature-date">Co-applicant Date</label>
+          <input type="date" id="coapplicant-signature-date" name="coapplicant_signature_date" />
+        </fieldset>
+
+        <button type="submit">Submit Application</button>
+      </form>
+      <div id="thank-you-rental" role="alert" aria-live="polite">Thank you for submitting your application. We will review it and contact you shortly.</div>
+    </section>
+  </div>
+
+  <footer role="contentinfo" aria-label="Footer">
+    <a href="https://www.payrent.com/" target="_blank" rel="noopener" aria-label="Pay Rent Online">
+      Pay Rent Online
+    </a>
+    <div class="privacy">
+      &copy; 2025 Newfound Living | 
+      <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a>
+    </div>
+    <div>
+      <a href="mailto:info.newfoundliving@gmail.com" class="email-link" aria-label="Send email to Newfound Living">
+        <img src="email-icon.svg" alt="" aria-hidden="true" /> info.newfoundliving@gmail.com
+      </a>
+    </div>
+    <div>
+      <a href="https://www.facebook.com/profile.php?id=61577097797242" target="_blank" rel="noopener" class="social-link" aria-label="Facebook page">
+        <img src="facebook-icon.svg" alt="" aria-hidden="true" /> Facebook
+      </a>
+    </div>
+  </footer>
+
+  <script>
+    // Tab switching logic
+    const tabs = document.querySelectorAll('.tab');
+    const notifySection = document.getElementById('notify-form-section');
+    const rentalSection = document.getElementById('rental-form-section');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        if(tab.classList.contains('active')) return;
+
+        tabs.forEach(t => {
+          t.classList.remove('active');
+          t.setAttribute('aria-selected', 'false');
+        });
+        tab.classList.add('active');
+        tab.setAttribute('aria-selected', 'true');
+
+        if(tab.id === 'tab-notify') {
+          notifySection.hidden = false;
+          rentalSection.hidden = true;
+        } else {
+          notifySection.hidden = true;
+          rentalSection.hidden = false;
+        }
+      });
+    });
+
+    // Simple form submission handlers to show thank-you messages without reload
+    document.getElementById('notify-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      this.style.display = 'none';
+      document.getElementById('thank-you').style.display = 'block';
+    });
+
+    document.getElementById('rental-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      this.style.display = 'none';
+      document.getElementById('thank-you-rental').style.display = 'block';
+    });
+  </script>
+</body>
+</html>
