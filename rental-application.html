@@ -1,1 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Newfound Living - Rental Application</title>
+  <meta name="description" content="Newfound Living Residential Tenancy Application Form." />
+  <link rel="icon" type="image/png" href="tinylogo1.png" />
+  <style>
+    :root {
+      --green: #2e7d32;
+      --white: #ffffff;
+      --dark-overlay: rgba(0, 0, 0, 0.6);
+      --input-bg: rgba(255, 255, 255, 0.15);
+      --input-border: rgba(255, 255, 255, 0.3);
+      --form-bg: rgba(0, 0, 0, 0.85);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      min-height: 100vh;
+      background: url('city.png') no-repeat center center;
+      background-size: cover;
+      color: var(--white);
+      position: relative;
+    }
+
+    .overlay {
+      background: var(--dark-overlay);
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 3rem auto 4rem;
+      padding: 2rem 1rem 3rem;
+      background-color: var(--form-bg);
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.7);
+    }
+
+    .logo {
+      width: 260px;
+      margin: 0 auto 1.25rem;
+      display: block;
+    }
+
+    h1 {
+      font-family: Georgia, serif;
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    form {
+      max-width: 100%;
+      color: var(--white);
+    }
+
+    fieldset {
+      border: none;
+      margin-bottom: 2rem;
+    }
+
+    legend {
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin-bottom: 0.75rem;
+      border-bottom: 1px solid var(--green);
+      padding-bottom: 0.25rem;
+    }
+
+    label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="date"],
+    textarea {
+      width: 100%;
+      padding: 0.5rem;
+      margin-top: 0.25rem;
+      border: 1px solid var(--input-border);
+      border-radius: 6px;
+      background: var(--input-bg);
+      color: var(--white);
+      font-size: 1rem;
+      font-family: inherit;
+      resize: vertical;
+    }
+
+    textarea {
+      min-height: 80px;
+    }
+
+    .checkbox-group,
+    .radio-group {
+      margin-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .checkbox-group label,
+    .radio-group label {
+      font-weight: normal;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    input[type="checkbox"],
+    input[type="radio"] {
+      margin-right: 0.4rem;
+      transform: scale(1.2);
+      vertical-align: middle;
+    }
+
+    .inline-input {
+      display: inline-block;
+      width: auto;
+      margin-left: 0.5rem;
+      vertical-align: middle;
+      padding: 0.3rem 0.5rem;
+    }
+
+    button {
+      background-color: var(--green);
+      color: var(--white);
+      border: none;
+      padding: 0.75rem 1.5rem;
+      font-size: 1.1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      width: 100%;
+      max-width: 300px;
+      margin: 2rem auto 0;
+      display: block;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #27642a;
+    }
+
+    #thank-you {
+      display: none;
+      margin-top: 1rem;
+      font-size: 1.2rem;
+      color: lightgreen;
+      text-align: center;
+    }
+
+    footer {
+      margin-top: 3rem;
+      font-size: 1rem;
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      max-width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    footer a {
+      color: #ffffff;
+      text-decoration: underline;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    .social-link, .email-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .social-link img, .email-link img {
+      width: 16px;
+      height: 16px;
+    }
+
+    .privacy {
+      font-size: 0.9rem;
+      color: #dddddd;
+      text-align: center;
+      margin-top: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay"></div>
+  <div class="container" role="main" aria-label="Rental Application Form">
+    <img src="logo-transparent.png" alt="Newfound Living Logo" class="logo" />
+    <h1>Newfound Living<br>Residential Tenancy Application</h1>
+
+    <form id="rental-application-form" action="https://formspree.io/f/xldnwbqq" method="POST" novalidate>
+      <fieldset>
+        <legend>Property Details</legend>
+        <label for="property-address">Property Address:</label>
+        <input type="text" id="property-address" name="property_address" required />
+
+        <label>Rental Unit:</label>
+        <div class="checkbox-group" role="group" aria-label="Rental Unit">
+          <label><input type="checkbox" name="rental_unit_main" value="Main Unit" /> Main Unit</label>
+          <label><input type="checkbox" name="rental_unit_basement" value="Basement Apartment" /> Basement Apartment</label>
+          <label>
+            <input type="checkbox" name="rental_unit_other" value="Other" /> Other:
+            <input type="text" name="rental_unit_other_text" class="inline-input" placeholder="Specify" />
+          </label>
+        </div>
+
+        <label for="move-in-date">Desired Move-in Date:</label>
+        <input type="date" id="move-in-date" name="move_in_date" required />
+      </fieldset>
+
+      <fieldset>
+        <legend>Applicant Information</legend>
+
+        <label for="full-name">Full Name:</label>
+        <input type="text" id="full-name" name="full_name" required />
+
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="date_of_birth" required />
+
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone_number" required />
+
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email_address" required />
+
+        <label for="current-address">Current Address:</label>
+        <input type="text" id="current-address" name="current_address" required />
+
+        <label for="landlord-name">Landlord’s Name:</label>
+        <input type="text" id="landlord-name" name="landlord_name" />
+
+        <label for="landlord-phone">Landlord’s Phone:</label>
+        <input type="tel" id="landlord-phone" name="landlord_phone" />
+
+        <label for="reason-leaving">Reason for Leaving:</label>
+        <textarea id="reason-leaving" name="reason_for_leaving"></textarea>
+
+        <label for="length-tenancy">Length of Tenancy:</label>
+        <input type="text" id="length-tenancy" name="length_of_tenancy" placeholder="e.g., 2 years" />
+      </fieldset>
+
+      <fieldset>
+        <legend>Employment / Income Verification</legend>
+
+        <label for="employer-name">Employer Name:</label>
+        <input type="text" id="employer-name" name="employer_name" />
+
+        <label for="position">Position:</label>
+        <input type="text" id="position" name="position" />
+
+        <label for="monthly-income">Monthly Income (Net):</label>
+        <input type="text" id="monthly-income" name="monthly_income" placeholder="e.g., $3000" />
+
+        <label for="employment-length">Length of Employment:</label>
+        <input type="text" id="employment-length" name="length_of_employment" placeholder="e.g., 3 years" />
+
+        <label class="checkbox-group" style="margin-top: 1rem;">
+          <input type="checkbox" name="proof_of_income" value="Yes" /> Proof of income attached (required for all adult tenants)
+        </label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Additional Occupants</legend>
+
+        <label for="occupant1">1. Name:</label>
+        <input type="text" id="occupant1" name="additional_occupant_1" />
+
+        <label for="occupant2">2. Name:</label>
+        <input type="text" id="occupant2" name="additional_occupant_2" />
+
+        <label for="occupant3">3. Name:</label>
+        <input type="text" id="occupant3" name="additional_occupant_3" />
+      </fieldset>
+
+      <fieldset>
+        <legend>Pets</legend>
+
+        <div class="radio-group" role="group" aria-label="Pets">
+          <label><input type="radio" name="pets" value="Yes" /> Yes</label>
+          <label><input type="radio" name="pets" value="No" checked /> No</label>
+        </div>
+
+        <label for="pet-details">If yes, type/size/breed:</label>
+        <input type="text" id="pet-details" name="pet_details" placeholder="e.g., Small dog - Beagle" />
+      </fieldset>
+
+      <fieldset>
+        <legend>Emergency Contact</legend>
+
+        <label for="emergency-name">Name:</label>
+        <input type="text" id="emergency-name" name="emergency_contact_name" />
+
+        <label for="emergency-phone">Phone:</label>
+        <input type="tel" id="emergency-phone" name="emergency_contact_phone" />
+
+        <label for="emergency-relationship">Relationship to Applicant:</label>
+        <input type="text" id="emergency-relationship" name="emergency_contact_relationship" />
+      </fieldset>
+
+      <fieldset>
+        <legend>References</legend>
+
+        <label for="reference1-name">1. Name:</label>
+        <input type="text" id="reference1-name" name="reference_1_name" />
+
+        <label for="reference1-phone">1. Phone:</label>
+        <input type="tel" id="reference1-phone" name="reference_1_phone" />
+
+        <label for="reference2-name">2. Name:</label>
+        <input type="text" id="reference2-name" name="reference_2_name" />
+
+        <label for="reference2-phone">2. Phone:</label>
+        <input type="tel" id="reference2-phone" name="reference_2_phone" />
+      </fieldset>
+
+      <fieldset>
+        <legend>Declaration</legend>
+
+        <p>
+          I declare that the information provided is true and complete. I understand that providing false
+          information or failing to disclose relevant details may result in denial or termination of tenancy.
+          I authorize Newfound Living Inc. to contact employers, landlords, and references to verify this
+          application.
+        </p>
+
+        <label for="applicant-signature">Signature:</label>
+        <input type="text" id="applicant-signature" name="applicant_signature" placeholder="Type your full name" required />
+
+        <label for="applicant-signature-date">Date:</label>
+        <input type="date" id="applicant-signature-date" name="applicant_signature_date" required />
+
+        <label for="coapplicant-signature">Co-applicant
 
