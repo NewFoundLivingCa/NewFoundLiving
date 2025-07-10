@@ -2,186 +2,105 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rent Payments – Newfound Living</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Newfound Living - Pay Rent</title>
   <link rel="icon" type="image/png" href="tinylogo1.png" />
   <style>
     :root {
       --green: #2e7d32;
-      --light-bg: #f2f2f2;
-      --dark: #1c1c1c;
-      --gray: #666;
+      --white: #ffffff;
+      --dark-overlay: rgba(0, 0, 0, 0.6);
     }
 
-    body {
+    body, html {
+      margin: 0; padding: 0;
+      height: 100%;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: var(--light-bg);
-      color: var(--dark);
-      margin: 0;
-      padding: 2rem;
+      background: url('city.png') no-repeat center center;
+      background-size: cover;
+      color: var(--white);
+      position: relative;
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 100vh;
+      text-align: center;
+      padding: 2rem;
     }
 
-    .payment-container {
-      background: white;
-      padding: 2.5rem 2rem;
+    .overlay {
+      background: var(--dark-overlay);
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      background: rgba(0,0,0,0.85);
+      padding: 2.5rem 3rem;
       border-radius: 12px;
-      max-width: 600px;
-      width: 100%;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
-      text-align: center;
+      max-width: 480px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.7);
     }
 
     h1 {
-      font-size: 2rem;
-      color: var(--green);
       margin-bottom: 1rem;
+      font-size: 2rem;
+      font-family: Georgia, serif;
     }
 
     p {
-      margin: 0.75rem 0;
-      font-size: 1.05rem;
-      color: var(--gray);
-    }
-
-    .email-box {
-      background-color: #eef2ee;
-      padding: 0.75rem 1rem;
-      border-radius: 8px;
-      margin: 1rem 0;
-      display: inline-block;
-      font-weight: bold;
       font-size: 1.1rem;
-      color: var(--dark);
+      line-height: 1.5;
+      margin-bottom: 2rem;
     }
 
-    .copy-btn, .home-btn {
-      background-color: var(--green);
-      color: white;
-      border: none;
-      padding: 0.5rem 1rem;
-      font-size: 0.95rem;
-      border-radius: 6px;
-      cursor: pointer;
-      margin-top: 0.5rem;
-    }
-
-    .copy-btn:hover, .home-btn:hover {
-      background-color: #388e3c;
-    }
-
-    form {
-      margin-top: 2rem;
-      text-align: left;
-    }
-
-    input, textarea {
-      width: 100%;
-      padding: 0.75rem;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      margin-bottom: 1rem;
-      font-size: 1rem;
-    }
-
-    button[type="submit"] {
-      background-color: var(--green);
-      color: white;
-      border: none;
-      padding: 0.75rem 1.5rem;
-      font-size: 1rem;
-      border-radius: 8px;
-      cursor: pointer;
-      display: block;
-      margin: auto;
-    }
-
-    button[type="submit"]:hover {
-      background-color: #388e3c;
-    }
-
-    .footer-note {
-      text-align: center;
-      font-size: 0.9rem;
-      color: var(--gray);
-      margin-top: 2rem;
-    }
-
-    .confirmation-message {
-      color: green;
-      margin-top: 1rem;
+    .email {
       font-weight: bold;
-      display: none;
+      font-size: 1.2rem;
+      color: var(--green);
+      background-color: #fff;
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      display: inline-block;
+      user-select: all;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      text-decoration: none;
+      color: var(--green);
     }
 
-    @media (max-width: 600px) {
-      .payment-container {
-        padding: 2rem 1rem;
-      }
+    .email:hover {
+      background-color: #dcedc8;
+    }
+
+    footer {
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: #ccc;
     }
   </style>
 </head>
 <body>
-  <div class="payment-container">
-    <h1>Rent Payments</h1>
-    <p>To pay your rent, please send an Interac e-Transfer to:</p>
-    <div class="email-box" id="paymentEmail">newfoundlivingmanagement@gmail.com</div>
-    <button class="copy-btn" onclick="copyEmail()">Copy Email</button>
-    <p><strong>Note:</strong> Be sure to include your property address in the message field. Payments are auto-deposited – no password required.</p>
-
-    <form id="confirm-form" action="https://formspree.io/f/xldnwbqq" method="POST">
-      <input type="text" name="name" placeholder="Your Name" required />
-      <input type="text" name="address" placeholder="Property Address" required />
-      <input type="date" name="payment-date" required />
-      <textarea name="notes" placeholder="Notes (optional)"></textarea>
-      <button type="submit">Submit Payment Confirmation</button>
-    </form>
-
-    <div class="confirmation-message" id="confirmationMessage">
-      ✅ Thank you! Your confirmation was sent.
-    </div>
-
-    <div style="margin-top: 2rem;">
-      <a href="index.html">
-        <button class="home-btn">← Back to Home</button>
-      </a>
-    </div>
-
-    <div class="footer-note">
-      Questions? Contact us at <strong>info.newfoundliving@gmail.com</strong>
-    </div>
+  <div class="overlay"></div>
+  <div class="container" role="main" aria-label="Rent Payment Information">
+    <h1>Pay Rent Online</h1>
+    <p>
+      We currently accept rent payments via e-Transfer only.<br />
+      Please send your rent to the following email address:
+    </p>
+    <a href="mailto:newfoundlivingmanagement@gmail.com" class="email" aria-label="Email for rent e-Transfer">
+      newfoundlivingmanagement@gmail.com
+    </a>
+    <p style="margin-top: 1.5rem;">
+      Please include your full name and rental property address in the message or notes.<br />
+      Contact us if you have any questions.
+    </p>
   </div>
 
-  <script>
-    function copyEmail() {
-      const email = document.getElementById('paymentEmail').innerText;
-      navigator.clipboard.writeText(email).then(() => {
-        alert('Email copied to clipboard!');
-      });
-    }
-
-    const form = document.getElementById('confirm-form');
-    const confirmationMessage = document.getElementById('confirmationMessage');
-
-    form.addEventListener('submit', async function (e) {
-      e.preventDefault();
-      const formData = new FormData(form);
-
-      try {
-        await fetch(form.action, {
-          method: 'POST',
-          body: formData,
-          headers: { 'Accept': 'application/json' }
-        });
-        form.reset();
-        confirmationMessage.style.display = 'block';
-      } catch (err) {
-        alert('Something went wrong. Please try again later.');
-      }
-    });
-  </script>
+  <footer>
+    &copy; 2025 Newfound Living | All rights reserved.
+  </footer>
 </body>
 </html>
