@@ -210,9 +210,11 @@
       margin-top: 3rem;
       font-size: 1rem;
       color: #ffffff;
-      display: inline-flex;
+      display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
+      text-align: center;
       gap: 0.5rem;
       padding: 0.75rem 1rem;
       border-radius: 8px;
@@ -289,36 +291,6 @@
         margin: 2rem 1rem 6rem;
       }
     }
-
-    /* Pay Rent fixed button */
-    #pay-rent-btn {
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: var(--green);
-      color: var(--white);
-      border: none;
-      padding: 0.75rem 1.5rem;
-      font-size: 1.1rem;
-      border-radius: 50px;
-      cursor: pointer;
-      font-weight: 700;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-      z-index: 9999;
-      transition: background-color 0.3s;
-      max-width: 220px;
-      width: 90vw;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-    }
-
-    #pay-rent-btn:hover {
-      background-color: #388e3c;
-      text-decoration: none;
-      color: white;
-    }
   </style>
 </head>
 <body>
@@ -328,7 +300,7 @@
   <div class="container" role="main" aria-label="Newfound Living main content">
     <img src="logo-transparent.png" alt="Newfound Living Logo" class="logo" />
     <h1>Welcome to Newfound Living</h1>
-    <h2>While all our rental units are currently filled, we’d love to keep you updated. Or submit your application now.</h2>
+    <h2>Our rental units are currently filled. Leave your email to be the first notified when availability opens.</h2>
 
     <div class="tabs" role="tablist" aria-label="Form selection tabs">
       <button class="tab active" role="tab" aria-selected="true" aria-controls="notify-form-section" id="tab-notify">Get Updates</button>
@@ -436,179 +408,4 @@
           </label>
           <label>
             <input type="radio" name="pets" value="No" checked /> No
-          </label>
-
-          <label for="pet-details">If yes, type/size/breed</label>
-          <input type="text" id="pet-details" name="pet_details" placeholder="e.g., small dog, tabby cat" />
-        </fieldset>
-
-        <fieldset>
-          <legend><strong>Emergency Contact</strong></legend>
-          <label for="emergency-name">Name</label>
-          <input type="text" id="emergency-name" name="emergency_contact_name" />
-
-          <label for="emergency-phone">Phone</label>
-          <input type="tel" id="emergency-phone" name="emergency_contact_phone" />
-
-          <label for="emergency-relationship">Relationship to Applicant</label>
-          <input type="text" id="emergency-relationship" name="emergency_contact_relationship" />
-        </fieldset>
-
-        <fieldset>
-          <legend><strong>References</strong></legend>
-          <label for="reference1-name">1. Name</label>
-          <input type="text" id="reference1-name" name="reference_1_name" />
-
-          <label for="reference1-phone">Phone</label>
-          <input type="tel" id="reference1-phone" name="reference_1_phone" />
-
-          <label for="reference2-name">2. Name</label>
-          <input type="text" id="reference2-name" name="reference_2_name" />
-
-          <label for="reference2-phone">Phone</label>
-          <input type="tel" id="reference2-phone" name="reference_2_phone" />
-        </fieldset>
-
-        <fieldset>
-          <legend><strong>Declaration</strong></legend>
-          <p style="font-size: 0.9rem; margin-bottom: 1rem;">
-            I declare that the information provided is true and complete. I understand that providing false information or failing to disclose relevant details may result in denial or termination of tenancy.
-            I authorize Newfound Living Inc. to contact employers, landlords, and references to verify this application.
-          </p>
-
-          <label for="applicant-signature">Signature</label>
-          <input type="text" id="applicant-signature" name="applicant_signature" placeholder="Type your full name" required />
-
-          <label for="applicant-signature-date">Date</label>
-          <input type="date" id="applicant-signature-date" name="applicant_signature_date" required />
-
-          <label for="coapplicant-signature">Co-applicant Signature (if applicable)</label>
-          <input type="text" id="coapplicant-signature" name="coapplicant_signature" placeholder="Type full name" />
-
-          <label for="coapplicant-signature-date">Date</label>
-          <input type="date" id="coapplicant-signature-date" name="coapplicant_signature_date" />
-        </fieldset>
-
-        <button type="submit">Submit Application</button>
-      </form>
-      <div id="thank-you-rental" role="alert" aria-live="polite">Thanks for submitting your application! We'll be in touch soon.</div>
-    </section>
-
-    <div class="features" aria-label="Why choose Newfound Living">
-      <div class="feature-box">
-        <div>🔧</div>
-        <h3>Stress-Free Renting</h3>
-        <p>Well-maintained homes with responsive service.</p>
-      </div>
-      <div class="feature-box">
-        <div>💡</div>
-        <h3>Transparent Pricing</h3>
-        <p>Fair rates with no hidden fees.</p>
-      </div>
-      <div class="feature-box">
-        <div>🏠</div>
-        <h3>Local Expertise</h3>
-        <p>Based in St. John's. We know the market.</p>
-      </div>
-    </div>
-
-  </div>
-
-  <footer>
-    <div class="rent-link">💳 <a href="rent.html" id="footer-pay-rent">Pay Rent Online</a></div>
-    <div>Locally owned and operated in St. John's &amp; surrounding areas</div>
-    <div class="email-link">
-      <img src="https://img.icons8.com/ios-filled/50/ffffff/new-post.png" alt="Email icon" />
-      <a href="mailto:info.newfoundliving@gmail.com">info.newfoundliving@gmail.com</a>
-    </div>
-    <div class="social-link">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook logo" />
-      <a href="https://www.facebook.com/profile.php?id=61577097797242" target="_blank" rel="noopener noreferrer">Visit our Facebook page</a>
-    </div>
-    <div class="privacy">We never share or sell your information. Your privacy is important to us.</div>
-  </footer>
-
-  <a href="rent.html" id="pay-rent-btn" aria-label="Pay Rent Online Button">Pay Rent Online</a>
-
-  <script>
-    // Tab functionality
-    const tabNotify = document.getElementById('tab-notify');
-    const tabRental = document.getElementById('tab-rental');
-    const notifySection = document.getElementById('notify-form-section');
-    const rentalSection = document.getElementById('rental-form-section');
-
-    function activateTab(selectedTab) {
-      if (selectedTab === 'notify') {
-        tabNotify.classList.add('active');
-        tabNotify.setAttribute('aria-selected', 'true');
-        tabRental.classList.remove('active');
-        tabRental.setAttribute('aria-selected', 'false');
-        notifySection.hidden = false;
-        rentalSection.hidden = true;
-      } else {
-        tabRental.classList.add('active');
-        tabRental.setAttribute('aria-selected', 'true');
-        tabNotify.classList.remove('active');
-        tabNotify.setAttribute('aria-selected', 'false');
-        rentalSection.hidden = false;
-        notifySection.hidden = true;
-      }
-    }
-
-    tabNotify.addEventListener('click', () => activateTab('notify'));
-    tabRental.addEventListener('click', () => activateTab('rental'));
-
-    // Notify form submit
-    const notifyForm = document.getElementById('notify-form');
-    const thankYouNotify = document.getElementById('thank-you');
-
-    notifyForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const formData = new FormData(notifyForm);
-
-      try {
-        const response = await fetch(notifyForm.action, {
-          method: 'POST',
-          body: formData,
-          headers: { 'Accept': 'application/json' },
-        });
-
-        if (response.ok) {
-          notifyForm.reset();
-          thankYouNotify.style.display = 'block';
-        } else {
-          alert('Oops! Something went wrong.');
-        }
-      } catch {
-        alert('Oops! Something went wrong.');
-      }
-    });
-
-    // Rental form submit
-    const rentalForm = document.getElementById('rental-form');
-    const thankYouRental = document.getElementById('thank-you-rental');
-
-    rentalForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const formData = new FormData(rentalForm);
-
-      try {
-        const response = await fetch(rentalForm.action, {
-          method: 'POST',
-          body: formData,
-          headers: { 'Accept': 'application/json' },
-        });
-
-        if (response.ok) {
-          rentalForm.reset();
-          thankYouRental.style.display = 'block';
-        } else {
-          alert('Oops! Something went wrong submitting your application.');
-        }
-      } catch {
-        alert('Oops! Something went wrong submitting your application.');
-      }
-    });
-  </script>
-</body>
-</html>
+          </
