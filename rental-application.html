@@ -25,7 +25,7 @@
     body, html {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       min-height: 100vh;
-      background: url('city.png') no-repeat center center;
+      background: url('city.png') no-repeat center center fixed;
       background-size: cover;
       color: var(--white);
       position: relative;
@@ -63,6 +63,13 @@
       font-family: Georgia, serif;
       margin-bottom: 1rem;
       text-align: center;
+    }
+
+    /* Remove borders from fieldsets */
+    fieldset {
+      border: none;
+      margin-bottom: 1.5rem;
+      padding: 0;
     }
 
     label {
@@ -118,7 +125,8 @@
       color: var(--white);
     }
 
-    button {
+    button, /* normal buttons */
+    .file-btn { /* file upload button styled */
       background-color: var(--green);
       color: var(--white);
       border: none;
@@ -132,9 +140,37 @@
       margin: 1rem auto 0;
       display: block;
       transition: background-color 0.3s;
+      text-align: center;
+      user-select: none;
     }
 
-    button:hover {
+    button:hover,
+    .file-btn:hover {
+      background-color: #388e3c;
+    }
+
+    /* Hide default file input */
+    input[type="file"] {
+      display: none;
+    }
+
+    /* Custom file input label */
+    label.file-label {
+      display: block;
+      max-width: 300px;
+      margin: 0.5rem auto 1rem;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 1rem;
+      border-radius: 8px;
+      padding: 0.75rem 1.5rem;
+      background-color: var(--green);
+      color: var(--white);
+      text-align: center;
+      transition: background-color 0.3s;
+      user-select: none;
+    }
+    label.file-label:hover {
       background-color: #388e3c;
     }
 
@@ -205,7 +241,7 @@
     <h1>Rental Application</h1>
     <form id="rental-form" action="https://formspree.io/f/xldnwbqq" method="POST" enctype="multipart/form-data" novalidate>
       <fieldset>
-        <legend><strong>Property Details</strong></legend>
+        <!-- Removed Property Details heading per request -->
         <label for="property-address">Property Address</label>
         <input type="text" id="property-address" name="property_address" required placeholder="e.g., 123 Main St" />
 
@@ -270,7 +306,8 @@
 
         <label><input type="checkbox" name="proof_of_income" value="Yes" /> Proof of income attached (required for all adult tenants)</label>
 
-        <label for="income-proof-file">Upload Proof of Income (PDF, JPG, PNG, DOC, etc.)</label>
+        <!-- Styled file upload button -->
+        <label for="income-proof-file" class="file-label" tabindex="0">Choose file to upload proof of income</label>
         <input type="file" id="income-proof-file" name="income_proof_file" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx,.txt" />
       </fieldset>
 
@@ -348,11 +385,6 @@
   </div>
 
   <footer role="contentinfo" aria-label="Footer">
-    <a href="https://www.payrent.com/" target="_blank" rel="noopener" aria-label="Pay Rent Online" class="social-link">
-      <!-- Pay Rent is a link, no icon needed -->
-      Pay Rent Online
-    </a>
-
     <a href="mailto:info.newfoundliving@gmail.com" class="email-link" aria-label="Send email to Newfound Living">
       <img src="email-icon.svg" alt="Email Icon" aria-hidden="true" /> info.newfoundliving@gmail.com
     </a>
