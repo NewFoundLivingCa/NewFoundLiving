@@ -2,50 +2,186 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Newfound Living - Pay Rent</title>
-  <meta name="description" content="Pay your rent to Newfound Living quickly and securely." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rent Payments – Newfound Living</title>
   <link rel="icon" type="image/png" href="tinylogo1.png" />
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    :root {
+      --green: #2e7d32;
+      --light-bg: #f2f2f2;
+      --dark: #1c1c1c;
+      --gray: #666;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--light-bg);
+      color: var(--dark);
+      margin: 0;
+      padding: 2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .payment-container {
+      background: white;
+      padding: 2.5rem 2rem;
+      border-radius: 12px;
+      max-width: 600px;
+      width: 100%;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2rem;
+      color: var(--green);
+      margin-bottom: 1rem;
+    }
+
+    p {
+      margin: 0.75rem 0;
+      font-size: 1.05rem;
+      color: var(--gray);
+    }
+
+    .email-box {
+      background-color: #eef2ee;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      margin: 1rem 0;
+      display: inline-block;
+      font-weight: bold;
+      font-size: 1.1rem;
+      color: var(--dark);
+    }
+
+    .copy-btn, .home-btn {
+      background-color: var(--green);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      font-size: 0.95rem;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 0.5rem;
+    }
+
+    .copy-btn:hover, .home-btn:hover {
+      background-color: #388e3c;
+    }
+
+    form {
+      margin-top: 2rem;
+      text-align: left;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+
+    button[type="submit"] {
+      background-color: var(--green);
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      display: block;
+      margin: auto;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #388e3c;
+    }
+
+    .footer-note {
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--gray);
+      margin-top: 2rem;
+    }
+
+    .confirmation-message {
+      color: green;
+      margin-top: 1rem;
+      font-weight: bold;
+      display: none;
+    }
+
+    @media (max-width: 600px) {
+      .payment-container {
+        padding: 2rem 1rem;
+      }
+    }
+  </style>
 </head>
 <body>
-  <div class="overlay"></div>
+  <div class="payment-container">
+    <h1>Rent Payments</h1>
+    <p>To pay your rent, please send an Interac e-Transfer to:</p>
+    <div class="email-box" id="paymentEmail">newfoundlivingmanagement@gmail.com</div>
+    <button class="copy-btn" onclick="copyEmail()">Copy Email</button>
+    <p><strong>Note:</strong> Include your property address in the message field. Payments are auto-deposited — no password required.</p>
 
-  <img src="logo-transparent.png" alt="Newfound Living Logo" class="logo" />
-  <nav aria-label="Primary navigation">
-    <a href="index.html">Get Updates</a>
-    <a href="rental-application.html">Rental Application</a>
-    <a href="pay-rent.html" aria-current="page">Pay Rent</a>
-  </nav>
+    <form id="confirm-form" action="https://formspree.io/f/xldnwbqq" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="text" name="address" placeholder="Property Address" required />
+      <input type="date" name="payment-date" required />
+      <textarea name="notes" placeholder="Notes (optional)"></textarea>
+      <button type="submit">Submit Payment Confirmation</button>
+    </form>
 
-  <div class="container">
-    <h1>Pay Rent</h1>
-    <p>We can only accept rent via e-transfer at this time. Please copy and paste the email address below for your transfers.</p>
-    <div class="email-box">
-      <div id="rent-email">newfoundlivingmanagement@gmail.com</div>
-      <button class="copy-btn" onclick="copyEmail()">Copy Email</button>
+    <div class="confirmation-message" id="confirmationMessage">
+      ✅ Thank you! Your confirmation was sent.
+    </div>
+
+    <div style="margin-top: 2rem;">
+      <a href="index.html">
+        <button class="home-btn">← Back to Home</button>
+      </a>
+    </div>
+
+    <div class="footer-note">
+      Questions? Email us at <strong>info.newfoundliving@gmail.com</strong>
     </div>
   </div>
 
-  <footer>
-    <a href="mailto:info.newfoundliving@gmail.com" class="footer-link" aria-label="Email Newfound Living">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 2v.511l-8 5.01-8-5.01V6h16zm-16 12V9.99l7.552 4.722a.5.5 0 0 0 .896 0L20 9.989V18H4z"/></svg>
-      info.newfoundliving@gmail.com
-    </a>
-    <a href="https://www.facebook.com/profile.php?id=61577097797242" target="_blank" rel="noopener noreferrer" class="footer-link" aria-label="Visit Newfound Living on Facebook">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M22.675 0h-21.35C.596 0 0 .592 0 1.322v21.357C0 23.408.595 24 1.325 24h11.495v-9.294H9.692v-3.622h3.128V8.41c0-3.1 1.894-4.788 4.659-4.788 1.325 0 2.466.099 2.797.142v3.24l-1.918.001c-1.504 0-1.796.716-1.796 1.767v2.318h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.324-.592 1.324-1.322V1.322C24 .592 23.404 0 22.675 0z"/></svg>
-      Facebook
-    </a>
-    <div class="privacy">© 2025 Newfound Living | All rights reserved.</div>
-  </footer>
-
   <script>
     function copyEmail() {
-      const email = document.getElementById('rent-email').innerText;
+      const email = document.getElementById('paymentEmail').innerText;
       navigator.clipboard.writeText(email).then(() => {
-        alert('Email address copied to clipboard!');
+        alert('Email copied to clipboard!');
       });
     }
+
+    const form = document.getElementById('confirm-form');
+    const confirmationMessage = document.getElementById('confirmationMessage');
+
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const formData = new FormData(form);
+
+      try {
+        await fetch(form.action, {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        });
+        form.reset();
+        confirmationMessage.style.display = 'block';
+      } catch (err) {
+        alert('Something went wrong. Please try again later.');
+      }
+    });
   </script>
 </body>
 </html>
