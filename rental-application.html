@@ -4,24 +4,262 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Newfound Living - Rental Application</title>
-  <meta name="description" content="Submit your rental application to Newfound Living quickly and securely." />
+  <meta name="description" content="Apply online for rental properties with Newfound Living." />
   <link rel="icon" type="image/png" href="tinylogo1.png" />
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    :root {
+      --green: #2e7d32;
+      --white: #ffffff;
+      --dark-overlay: rgba(0, 0, 0, 0.6);
+      --form-bg: rgba(0, 0, 0, 0.85);
+      --input-bg: rgba(255 255 255 / 0.15);
+      --input-border: rgba(255 255 255 / 0.3);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: url('city.png') no-repeat center center;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center top;
+      color: var(--white);
+      min-height: 100vh;
+      position: relative;
+    }
+
+    .overlay {
+      background: var(--dark-overlay);
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .logo {
+      width: 260px;
+      margin: 2rem auto 1rem;
+      display: block;
+      z-index: 1;
+      position: relative;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+      z-index: 1;
+      position: relative;
+    }
+
+    nav a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: bold;
+      background: var(--green);
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+
+    nav a:hover,
+    nav a:focus,
+    nav a[aria-current="page"] {
+      background: #388e3c;
+      outline: none;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+      margin: 2rem auto 4rem;
+      padding: 2rem;
+      background-color: var(--form-bg);
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.6);
+      color: var(--white);
+    }
+
+    h1 {
+      margin-bottom: 1.5rem;
+      font-family: Georgia, serif;
+      text-align: center;
+    }
+
+    form label {
+      display: block;
+      margin-bottom: 0.3rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    form input[type="text"],
+    form input[type="email"],
+    form input[type="date"],
+    form input[type="tel"],
+    form textarea {
+      width: 100%;
+      padding: 0.5rem 0.75rem;
+      margin-bottom: 1rem;
+      border-radius: 6px;
+      border: 1px solid var(--input-border);
+      background-color: var(--input-bg);
+      color: var(--white);
+      font-size: 1rem;
+      font-family: inherit;
+    }
+
+    form textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    form input[type="checkbox"],
+    form input[type="radio"] {
+      margin-right: 0.4rem;
+      transform: scale(1.1);
+      vertical-align: middle;
+    }
+
+    .checkbox-group {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .checkbox-group label {
+      margin: 0;
+      font-weight: normal;
+      font-size: 0.95rem;
+      cursor: pointer;
+      color: var(--white);
+    }
+
+    fieldset {
+      border: none;
+      margin-bottom: 1.5rem;
+    }
+
+    legend {
+      font-weight: bold;
+      margin-bottom: 0.75rem;
+      font-size: 1.1rem;
+      border-bottom: 1px solid var(--green);
+      padding-bottom: 0.3rem;
+    }
+
+    button {
+      background-color: var(--green);
+      color: var(--white);
+      border: none;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      width: 100%;
+      max-width: 300px;
+      margin: 1rem auto 0;
+      display: block;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #388e3c;
+    }
+
+    #thank-you-rental {
+      display: none;
+      margin-top: 1rem;
+      font-size: 1.1rem;
+      color: lightgreen;
+      text-align: center;
+    }
+
+    footer {
+      position: relative;
+      z-index: 1;
+      margin-top: 3rem;
+      font-size: 1rem;
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      max-width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    footer a {
+      color: #ffffff;
+      text-decoration: underline;
+      margin-left: 0.25rem;
+      font-size: 1rem;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .social-link, .email-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .social-link img, .email-link img {
+      width: 16px;
+      height: 16px;
+      filter: invert(100%) brightness(200%);
+      user-select: none;
+    }
+
+    .privacy {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: #dddddd;
+      text-align: center;
+    }
+
+    /* Responsive */
+    @media (max-width: 800px) {
+      .container {
+        margin: 2rem 1rem 6rem;
+      }
+    }
+  </style>
 </head>
 <body>
   <div class="overlay"></div>
 
+  <!-- Header logo and navigation -->
   <img src="logo-transparent.png" alt="Newfound Living Logo" class="logo" />
   <nav aria-label="Primary navigation">
     <a href="index.html">Get Updates</a>
-    <a href="rental-application.html">Rental Application</a>
-    <a href="pay-rent.html" aria-current="page">Pay Rent</a>
+    <a href="rental-application.html" aria-current="page">Rental Application</a>
+    <a href="pay-rent.html">Pay Rent</a>
   </nav>
 
   <div class="container" role="main" aria-label="Rental Application Form">
     <h1>Rental Application</h1>
-    <form id="rental-form" action="https://formspree.io/f/xldnwbqq" method="POST" enctype="multipart/form-data" novalidate>
+    <form id="rental-form" action="https://formspree.io/f/xldnwbqq" method="POST" novalidate>
+      <!-- Property Details -->
       <fieldset>
+        <legend>Property Details</legend>
         <label for="property-address">Property Address</label>
         <input type="text" id="property-address" name="property_address" required placeholder="e.g., 123 Main St" />
 
@@ -38,8 +276,9 @@
         <input type="date" id="move-in-date" name="move_in_date" required />
       </fieldset>
 
+      <!-- Applicant Information -->
       <fieldset>
-        <legend><strong>Applicant Information</strong></legend>
+        <legend>Applicant Information</legend>
 
         <label for="full-name">Full Name</label>
         <input type="text" id="full-name" name="full_name" required />
@@ -69,29 +308,28 @@
         <input type="text" id="length-tenancy" name="length_of_tenancy" placeholder="e.g., 2 years" />
       </fieldset>
 
+      <!-- Employment / Income Verification -->
       <fieldset>
-        <legend><strong>Employment / Income Verification</strong></legend>
+        <legend>Employment / Income Verification</legend>
 
         <label for="employer-name">Employer Name</label>
-        <input type="text" id="employer-name" name="employer_name" required />
+        <input type="text" id="employer-name" name="employer_name" />
 
         <label for="position">Position</label>
-        <input type="text" id="position" name="position" required />
+        <input type="text" id="position" name="position" />
 
         <label for="monthly-income">Monthly Income (Net)</label>
-        <input type="number" id="monthly-income" name="monthly_income" required placeholder="e.g., 3000" />
+        <input type="text" id="monthly-income" name="monthly_income" placeholder="e.g., $3000" />
 
         <label for="employment-length">Length of Employment</label>
         <input type="text" id="employment-length" name="length_of_employment" placeholder="e.g., 3 years" />
 
         <label><input type="checkbox" name="proof_of_income" value="Yes" /> Proof of income attached (required for all adult tenants)</label>
-
-        <label for="income-proof-file" class="file-label" tabindex="0">Choose file to upload proof of income</label>
-        <input type="file" id="income-proof-file" name="income_proof_file" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx,.txt" />
       </fieldset>
 
+      <!-- Additional Occupants -->
       <fieldset>
-        <legend><strong>Additional Occupants</strong></legend>
+        <legend>Additional Occupants</legend>
 
         <label for="occupant1">1. Name</label>
         <input type="text" id="occupant1" name="additional_occupant_1" />
@@ -103,16 +341,18 @@
         <input type="text" id="occupant3" name="additional_occupant_3" />
       </fieldset>
 
+      <!-- Pets -->
       <fieldset>
-        <legend><strong>Pets</strong></legend>
+        <legend>Pets</legend>
         <label><input type="radio" name="pets" value="Yes" /> Yes</label>
         <label><input type="radio" name="pets" value="No" checked /> No</label>
         <label for="pet-details">If yes, type/size/breed</label>
         <input type="text" id="pet-details" name="pet_details" placeholder="e.g., Small dog - Beagle" />
       </fieldset>
 
+      <!-- Emergency Contact -->
       <fieldset>
-        <legend><strong>Emergency Contact</strong></legend>
+        <legend>Emergency Contact</legend>
 
         <label for="emergency-name">Name</label>
         <input type="text" id="emergency-name" name="emergency_contact_name" />
@@ -124,8 +364,9 @@
         <input type="text" id="emergency-relationship" name="emergency_contact_relationship" />
       </fieldset>
 
+      <!-- References -->
       <fieldset>
-        <legend><strong>References</strong></legend>
+        <legend>References</legend>
 
         <label for="reference1-name">1. Name</label>
         <input type="text" id="reference1-name" name="reference_1_name" />
@@ -140,18 +381,87 @@
         <input type="tel" id="reference2-phone" name="reference_2_phone" />
       </fieldset>
 
+      <!-- Declaration -->
       <fieldset>
-        <legend><strong>Declaration</strong></legend>
-
+        <legend>Declaration</legend>
         <p>I declare that the information provided is true and complete. I understand that providing false information or failing to disclose relevant details may result in denial or termination of tenancy. I authorize Newfound Living Inc. to contact employers, landlords, and references to verify this application.</p>
+        <label for="signature">Signature</label>
+        <input type="text" id="signature" name="signature" required placeholder="Type your full name" />
 
-        <label for="applicant-signature">Signature</label>
-        <input type="text" id="applicant-signature" name="applicant_signature" placeholder="Type your full name" required />
+        <label for="date-signed">Date</label>
+        <input type="date" id="date-signed" name="date_signed" required />
+        
+        <label for="coapplicant-signature">Signature (Co-applicant, if applicable)</label>
+        <input type="text" id="coapplicant-signature" name="coapplicant_signature" placeholder="Type full name" />
 
-        <label for="applicant-signature-date">Date</label>
-        <input type="date" id="applicant-signature-date" name="applicant_signature_date" required />
+        <label for="coapplicant-date">Date</label>
+        <input type="date" id="coapplicant-date" name="coapplicant_date" />
+      </fieldset>
 
-        <label for="coapplicant-signature">Co-applicant Signature (if applicable)</label>
+      <!-- Office Use Only -->
+      <fieldset>
+        <legend>Office Use Only</legend>
+        <label for="application-received">Application Received</label>
+        <input type="date" id="application-received" name="application_received" />
+
+        <label>Interviewed</label>
+        <label><input type="radio" name="interviewed" value="Yes" /> Yes</label>
+        <label><input type="radio" name="interviewed" value="No" /> No</label>
+
+        <label>Approved</label>
+        <label><input type="radio" name="approved" value="Yes" /> Yes</label>
+        <label><input type="radio" name="approved" value="No" /> No</label>
+
+        <label for="notes">Notes</label>
+        <textarea id="notes" name="notes"></textarea>
+      </fieldset>
+
+      <button type="submit">Submit Application</button>
+      <p id="thank-you-rental" role="alert" aria-live="polite"></p>
+    </form>
+  </div>
+
+  <footer>
+    <div class="email-link">
+      <img src="email-icon.svg" alt="" aria-hidden="true" />
+      <a href="mailto:newfoundlivingmanagement@gmail.com">newfoundlivingmanagement@gmail.com</a>
+    </div>
+    <div class="social-link">
+      <a href="https://www.facebook.com/profile.php?id=61577097797242" target="_blank" rel="noopener" aria-label="Facebook page">
+        <img src="facebook-icon.svg" alt="" aria-hidden="true" />
+        Facebook
+      </a>
+    </div>
+    <div class="privacy">© 2025 Newfound Living | All rights reserved.</div>
+  </footer>
+
+  <script>
+    // Optional: handle form submission with a thank you message without page reload
+    const form = document.getElementById('rental-form');
+    const thankYou = document.getElementById('thank-you-rental');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(form);
+      try {
+        const response = await fetch(form.action, {
+          method: form.method,
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        });
+        if (response.ok) {
+          thankYou.textContent = "Thank you for submitting your rental application!";
+          form.reset();
+        } else {
+          thankYou.textContent = "Oops! There was a problem submitting your form.";
+        }
+      } catch {
+        thankYou.textContent = "Oops! There was a problem submitting your form.";
+      }
+    });
+  </script>
+</body>
+</html>
         <input type="text" id="coapplicant-signature" name="coapplicant_signature" placeholder="Type full name or leave blank" />
 
         <label for="coapplicant-signature-date">Co-applicant Date</label>
