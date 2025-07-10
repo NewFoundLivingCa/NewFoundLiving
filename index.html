@@ -12,493 +12,122 @@
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" href="tinylogo1.png" />
   <style>
-    :root {
-      --green: #2e7d32;
-      --white: #ffffff;
-      --dark-overlay: rgba(0, 0, 0, 0.6);
-      --input-bg: rgba(255 255 255 / 0.15);
-      --input-border: rgba(255 255 255 / 0.3);
-      --form-bg: rgba(0, 0, 0, 0.85);
-    }
-
-    * {
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
     }
-
-    body, html {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      min-height: 100vh;
-      background: url('city.png') no-repeat center center;
-      background-size: cover;
-      color: var(--white);
-      position: relative;
-    }
-
-    /* Logo watermark behind entire page except form background */
-    .logo-watermark {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      width: 400px;
-      max-width: 80vw;
-      opacity: 0.08;
-      transform: translate(-50%, -50%);
-      pointer-events: none;
-      user-select: none;
-      z-index: 0;
-      filter: grayscale(80%) brightness(1.2);
-    }
-
-    .overlay {
-      background: var(--dark-overlay);
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-    }
-
-    .container {
-      position: relative;
-      z-index: 1;
+    section {
       max-width: 700px;
-      margin: 3rem auto 6rem;
-      padding: 2rem 1rem 3rem;
-      /* No background here - forms will have their own */
+      margin: 3rem auto;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2.property-heading {
       text-align: center;
-    }
-
-    .logo {
-      width: 260px;
-      margin: 0 auto 1.25rem;
-      position: relative;
-      z-index: 1;
-    }
-
-    h1 {
-      font-size: 2rem;
-      font-family: Georgia, serif;
-      margin-bottom: 0.5rem;
-    }
-
-    h2 {
-      font-size: 1.1rem;
-      font-weight: normal;
-      margin-bottom: 2rem;
-      line-height: 1.4;
-    }
-
-    /* Tabs */
-    .tabs {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
+      font-size: 1.5rem;
       margin-bottom: 1.5rem;
-      cursor: pointer;
     }
-
-    .tab {
-      padding: 0.5rem 1.5rem;
-      border-radius: 30px;
-      background: rgba(255 255 255 / 0.15);
-      color: var(--white);
-      font-weight: 600;
-      user-select: none;
-      transition: background-color 0.3s;
-      border: 2px solid transparent;
-    }
-
-    .tab.active {
-      background: var(--green);
-      border-color: var(--green);
-      cursor: default;
-    }
-
-    /* Forms shared styles */
-    form {
-      text-align: left;
-      max-width: 600px;
-      margin: auto;
-      color: var(--white);
-      background-color: var(--form-bg);
-      padding: 1.5rem 2rem 2rem;
-      border-radius: 10px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.6);
-    }
-
-    label {
+    form label {
       display: block;
-      margin-bottom: 0.3rem;
-      font-weight: 600;
-      font-size: 0.95rem;
+      margin: 0.75rem 0 0.25rem;
     }
-
-    input[type="text"],
-    input[type="email"],
-    input[type="date"],
-    input[type="tel"],
-    textarea,
-    select {
+    form input, form textarea, form select {
       width: 100%;
-      padding: 0.5rem 0.75rem;
-      margin-bottom: 1rem;
-      border-radius: 6px;
-      border: 1px solid var(--input-border);
-      background-color: var(--input-bg);
-      color: var(--white);
+      padding: 0.6rem;
       font-size: 1rem;
-      font-family: inherit;
+      border-radius: 4px;
+      border: 1px solid #ccc;
     }
-
-    textarea {
-      resize: vertical;
-      min-height: 80px;
-    }
-
-    input[type="checkbox"] {
-      margin-right: 0.4rem;
-      transform: scale(1.1);
-      vertical-align: middle;
-    }
-
-    input[type="radio"] {
-      margin-right: 0.4rem;
-      transform: scale(1.1);
-      vertical-align: middle;
-    }
-
-    .checkbox-group {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      margin-bottom: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .checkbox-group label {
-      margin: 0;
-      font-weight: normal;
-      font-size: 0.95rem;
-      cursor: pointer;
-      color: var(--white);
-    }
-
-    /* Button */
-    button {
-      background-color: var(--green);
-      color: var(--white);
+    form button {
+      background-color: #2e7d32;
+      color: white;
       border: none;
       padding: 0.75rem 1.5rem;
-      font-size: 1rem;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
-      width: 100%;
-      max-width: 300px;
-      margin: 1rem auto 0;
-      display: block;
-      transition: background-color 0.3s;
-    }
-
-    button:hover {
-      background-color: #388e3c;
-    }
-
-    #thank-you,
-    #thank-you-rental {
-      display: none;
       margin-top: 1rem;
-      font-size: 1.1rem;
-      color: lightgreen;
-      text-align: center;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
     }
-
-    /* Footer */
+    form button:hover {
+      background-color: #1b5e20;
+    }
+    #thank-you, #thank-you-rental {
+      text-align: center;
+      margin-top: 1.5rem;
+      font-weight: bold;
+      color: green;
+    }
     footer {
-      position: relative;
-      z-index: 1;
-      margin-top: 3rem;
-      font-size: 1rem;
-      color: #ffffff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      background-color: #333;
+      color: #fff;
+      padding: 2rem 1rem;
       text-align: center;
-      gap: 0.5rem;
-      padding: 0.75rem 1rem;
-      border-radius: 8px;
-      max-width: fit-content;
-      margin-left: auto;
-      margin-right: auto;
-      background-color: rgba(0, 0, 0, 0.4);
     }
-
     footer a {
-      color: #ffffff;
-      text-decoration: underline;
-      margin-left: 0.25rem;
-      font-size: 1rem;
-      font-weight: 500;
+      color: #fff;
+      text-decoration: none;
+      margin: 0 0.5rem;
     }
-
-    .social-link, .email-link {
+    footer img {
+      vertical-align: middle;
+      width: 20px;
+      height: 20px;
+      margin-right: 0.5rem;
+    }
+    .icon-text {
       display: inline-flex;
       align-items: center;
-      gap: 0.25rem;
-    }
-
-    .social-link img, .email-link img {
-      width: 16px;
-      height: 16px;
-    }
-
-    .privacy {
-      margin-top: 1rem;
-      font-size: 0.9rem;
-      color: #dddddd;
-      text-align: center;
-    }
-
-    /* Features */
-    .features {
-      display: flex;
-      justify-content: space-between;
-      gap: 1rem;
-      margin-top: 3rem;
-      flex-wrap: nowrap;
-      z-index: 1;
-      position: relative;
-    }
-
-    .feature-box {
-      background: rgba(0, 0, 0, 0.6);
-      padding: 1.5rem;
-      border-radius: 8px;
-      width: 32%;
-      min-width: 180px;
-      text-align: center;
-      color: #ddd;
-    }
-
-    .feature-box h3 {
-      margin: 1rem 0 0.5rem;
-      font-size: 1.2rem;
-      color: var(--white);
-    }
-
-    /* Responsive */
-    @media (max-width: 800px) {
-      .features {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .feature-box {
-        width: 90%;
-        margin-bottom: 1rem;
-      }
-
-      .container {
-        margin: 2rem 1rem 6rem;
-      }
+      gap: 0.5rem;
+      margin: 0.25rem auto;
+      justify-content: center;
     }
   </style>
 </head>
 <body>
-  <div class="overlay"></div>
-  <img src="logo-transparent.png" alt="Newfound Living Logo Watermark" class="logo-watermark" aria-hidden="true" />
+  <!-- Get Updates Form -->
+  <section id="notify-form-section" role="tabpanel" aria-labelledby="tab-notify">
+    <form id="notify-form" action="https://formspree.io/f/xldnwbqq" method="POST" novalidate>
+      <label for="notify-email">Your email address <span aria-hidden="true">*</span></label>
+      <input type="email" name="email" id="notify-email" placeholder="you@example.com" required />
 
-  <div class="container" role="main" aria-label="Newfound Living main content">
-    <img src="logo-transparent.png" alt="Newfound Living Logo" class="logo" />
-    <h1>Welcome to Newfound Living</h1>
-    <h2>Our rental units are currently filled. Leave your email to be the first notified when availability opens.</h2>
+      <label for="notify-message">Your message (optional)</label>
+      <textarea name="message" id="notify-message" placeholder="Your message"></textarea>
 
-    <div class="tabs" role="tablist" aria-label="Form selection tabs">
-      <button class="tab active" role="tab" aria-selected="true" aria-controls="notify-form-section" id="tab-notify">Get Updates</button>
-      <button class="tab" role="tab" aria-selected="false" aria-controls="rental-form-section" id="tab-rental">Rental Application</button>
-    </div>
+      <button type="submit" id="submit-button">Submit</button>
+    </form>
+    <div id="thank-you" role="alert" aria-live="polite">Thanks for signing up! We'll be in touch soon.</div>
+  </section>
 
-    <!-- Get Updates Form -->
-    <section id="notify-form-section" role="tabpanel" aria-labelledby="tab-notify">
-      <form id="notify-form" action="https://formspree.io/f/xldnwbqq" method="POST" novalidate>
-        <label for="notify-email">Your email address <span aria-hidden="true">*</span></label>
-        <input type="email" name="email" id="notify-email" placeholder="you@example.com" required />
-
-        <label for="notify-message">Your message (optional)</label>
-        <textarea name="message" id="notify-message" placeholder="Your message"></textarea>
-
-        <button type="submit">Get Updates</button>
-      </form>
-      <div id="thank-you" role="alert" aria-live="polite">Thanks for signing up! We'll be in touch soon.</div>
-    </section>
-
-    <!-- Rental Application Form -->
-    <section id="rental-form-section" role="tabpanel" aria-labelledby="tab-rental" hidden>
-      <form id="rental-form" action="https://formspree.io/f/xldnwbqq" method="POST" novalidate>
-        <fieldset>
-          <legend><strong>Property Details</strong></legend>
-          <label for="property-address">Property Address</label>
-          <input type="text" id="property-address" name="property_address" required placeholder="e.g., 123 Main St" />
-
-          <div class="checkbox-group" role="group" aria-label="Rental Unit">
-            <label><input type="checkbox" name="rental_unit_main" value="Main Unit" /> Main Unit</label>
-            <label><input type="checkbox" name="rental_unit_basement" value="Basement Apartment" /> Basement Apartment</label>
-            <label>
-              <input type="checkbox" name="rental_unit_other" value="Other" /> Other:
-              <input type="text" name="rental_unit_other_text" placeholder="Specify" style="width: 120px; display: inline-block;" />
-            </label>
-          </div>
-
-          <label for="move-in-date">Desired Move-in Date</label>
-          <input type="date" id="move-in-date" name="move_in_date" required />
-        </fieldset>
-
-        <fieldset>
-          <legend><strong>Applicant Information</strong></legend>
-
-          <label for="full-name">Full Name</label>
-          <input type="text" id="full-name" name="full_name" required />
-
-          <label for="dob">Date of Birth</label>
-          <input type="date" id="dob" name="date_of_birth" required />
-
-          <label for="phone">Phone Number</label>
-          <input type="tel" id="phone" name="phone_number" required />
-
-          <label for="email">Email Address</label>
-          <input type="email" id="email" name="email_address" required />
-
-          <label for="current-address">Current Address</label>
-          <input type="text" id="current-address" name="current_address" required />
-
-          <label for="landlord-name">Landlord’s Name</label>
-          <input type="text" id="landlord-name" name="landlord_name" />
-
-          <label for="landlord-phone">Landlord’s Phone</label>
-          <input type="tel" id="landlord-phone" name="landlord_phone" />
-
-          <label for="reason-leaving">Reason for Leaving</label>
-          <textarea id="reason-leaving" name="reason_for_leaving"></textarea>
-
-          <label for="length-tenancy">Length of Tenancy</label>
-          <input type="text" id="length-tenancy" name="length_of_tenancy" placeholder="e.g., 2 years" />
-        </fieldset>
-
-        <fieldset>
-          <legend><strong>Employment / Income Verification</strong></legend>
-
-          <label for="employer-name">Employer Name</label>
-          <input type="text" id="employer-name" name="employer_name" />
-
-          <label for="position">Position</label>
-          <input type="text" id="position" name="position" />
-
-          <label for="monthly-income">Monthly Income (Net)</label>
-          <input type="text" id="monthly-income" name="monthly_income" placeholder="e.g., $3000" />
-
-          <label for="employment-length">Length of Employment</label>
-          <input type="text" id="employment-length" name="length_of_employment" placeholder="e.g., 3 years" />
-
-          <label><input type="checkbox" name="proof_of_income" value="Yes" /> Proof of income attached (required for all adult tenants)</label>
-        </fieldset>
-
-        <fieldset>
-          <legend><strong>Additional Occupants</strong></legend>
-
-          <label for="occupant1">1. Name</label>
-          <input type="text" id="occupant1" name="additional_occupant_1" />
-
-          <label for="occupant2">2. Name</label>
-          <input type="text" id="occupant2" name="additional_occupant_2" />
-
-          <label for="occupant3">3. Name</label>
-          <input type="text" id="occupant3" name="additional_occupant_3" />
-        </fieldset>
-
-        <fieldset>
-          <legend><strong>Pets</strong></legend>
-          <label><input type="radio" name="pets" value="Yes" /> Yes</label>
-          <label><input type="radio" name="pets" value="No" checked /> No</label>
-          <label for="pet-details">If yes, type/size/breed</label>
-          <input type="text" id="pet-details" name="pet_details" placeholder="e.g., Small dog - Beagle" />
-        </fieldset>
-
-        <fieldset>
-          <legend><strong>Emergency Contact</strong></legend>
-
-          <label for="emergency-name">Name</label>
-          <input type="text" id="emergency-name" name="emergency_contact_name" />
-
-          <label for="emergency-phone">Phone</label>
-          <input type="tel" id="emergency-phone" name="emergency_contact_phone" />
-
-          <label for="emergency-relationship">Relationship to Applicant</label>
-          <input type="text" id="emergency-relationship" name="emergency_contact_relationship" />
-        </fieldset>
-
-        <fieldset>
-          <legend><strong>References</strong></legend>
-
-          <label for="reference1-name">1. Name</label>
-          <input type="text" id="reference1-name" name="reference_1_name" />
-
-          <label for="reference1-phone">1. Phone</label>
-          <input type="tel" id="reference1-phone" name="reference_1_phone" />
-
-          <label for="reference2-name">2. Name</label>
-          <input type="text" id="reference2-name" name="reference_2_name" />
-
-          <label for="reference2-phone">2. Phone</label>
-          <input type="tel" id="reference2-phone" name="reference_2_phone" />
-        </fieldset>
-
-        <fieldset>
-          <legend><strong>Declaration</strong></legend>
-
-          <p>I declare that the information provided is true and complete. I understand that providing false information or failing to disclose relevant details may result in denial or termination of tenancy. I authorize Newfound Living Inc. to contact employers, landlords, and references to verify this application.</p>
-
-          <label for="applicant-signature">Signature</label>
-          <input type="text" id="applicant-signature" name="applicant_signature" placeholder="Type your full name" required />
-
-          <label for="applicant-signature-date">Date</label>
-          <input type="date" id="applicant-signature-date" name="applicant_signature_date" required />
-
-          <label for="coapplicant-signature">Co-applicant Signature (if applicable)</label>
-          <input type="text" id="coapplicant-signature" name="coapplicant_signature" placeholder="Type full name or leave blank" />
-
-          <label for="coapplicant-signature-date">Co-applicant Date</label>
-          <input type="date" id="coapplicant-signature-date" name="coapplicant_signature_date" />
-        </fieldset>
-
-        <button type="submit">Submit Application</button>
-      </form>
-      <div id="thank-you-rental" role="alert" aria-live="polite">Thank you for submitting your application. We will review it and contact you shortly.</div>
-    </section>
-  </div>
+  <!-- Rental Application Section (example heading shown) -->
+  <section id="rental-form-section" hidden>
+    <h2 class="property-heading">Rental Property Details</h2>
+    <!-- Rental form elements go here -->
+  </section>
 
   <footer role="contentinfo" aria-label="Footer">
-    <a href="https://www.payrent.com/" target="_blank" rel="noopener" aria-label="Pay Rent Online">
-      Pay Rent Online
-    </a>
-    <div class="privacy">
-      &copy; 2025 Newfound Living | 
-      <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a>
-    </div>
-    <div>
-      <a href="mailto:info.newfoundliving@gmail.com" class="email-link" aria-label="Send email to Newfound Living">
-        <img src="email-icon.svg" alt="" aria-hidden="true" /> info.newfoundliving@gmail.com
+    <div class="icon-text">
+      <a href="https://www.payrent.com/" target="_blank" rel="noopener">
+        Pay Rent Online
       </a>
     </div>
-    <div>
-      <a href="https://www.facebook.com/profile.php?id=61577097797242" target="_blank" rel="noopener" class="social-link" aria-label="Facebook page">
-        <img src="facebook-icon.svg" alt="" aria-hidden="true" /> Facebook
-      </a>
+    <div class="icon-text">
+      <img src="https://img.icons8.com/ios-filled/50/ffffff/new-post.png" alt="Email Icon">
+      <a href="mailto:info.newfoundliving@gmail.com">info.newfoundliving@gmail.com</a>
+    </div>
+    <div class="icon-text">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook Icon">
+      <a href="https://www.facebook.com/profile.php?id=61577097797242" target="_blank">Facebook</a>
+    </div>
+    <div style="margin-top: 1rem; font-size: 0.95rem; color: #ccc;">
+      We respect your privacy and never share your personal information.
     </div>
   </footer>
 
   <script>
-    // Tab switching logic
     const tabs = document.querySelectorAll('.tab');
     const notifySection = document.getElementById('notify-form-section');
     const rentalSection = document.getElementById('rental-form-section');
@@ -524,17 +153,19 @@
       });
     });
 
-    // Simple form submission handlers to show thank-you messages without reload
     document.getElementById('notify-form').addEventListener('submit', function(e) {
       e.preventDefault();
       this.style.display = 'none';
       document.getElementById('thank-you').style.display = 'block';
     });
 
-    document.getElementById('rental-form').addEventListener('submit', function(e) {
-      e.preventDefault();
-      this.style.display = 'none';
-      document.getElementById('thank-you-rental').style.display = 'block';
+    document.getElementById('notify-email').addEventListener('input', function () {
+      const button = document.getElementById('submit-button');
+      if (this.value.trim().length > 0) {
+        button.textContent = 'Submit';
+      } else {
+        button.textContent = 'Submit';
+      }
     });
   </script>
 </body>
