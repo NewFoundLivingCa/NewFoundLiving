@@ -94,11 +94,19 @@
       text-align: center;
     }
 
+    .email-box {
+      border: 2px solid var(--green);
+      padding: 1rem;
+      border-radius: 10px;
+      background-color: rgba(255, 255, 255, 0.05);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
     .email-link {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      margin-bottom: 1rem;
       justify-content: center;
       font-size: 1.1rem;
       user-select: text;
@@ -158,13 +166,13 @@
       font-weight: 500;
     }
 
-    .social-link {
+    .social-link, .email-footer-link {
       display: inline-flex;
       align-items: center;
       gap: 0.25rem;
     }
 
-    .social-link img {
+    .social-link img, .email-footer-link img {
       width: 16px;
       height: 16px;
     }
@@ -177,7 +185,6 @@
       max-width: 300px;
     }
 
-    /* Responsive */
     @media (max-width: 600px) {
       nav {
         flex-direction: column;
@@ -201,37 +208,35 @@
 <body>
   <div class="overlay"></div>
   <div class="container" role="main" aria-label="Pay Rent Page">
-
     <img src="logo-transparent.png" alt="Newfound Living Logo" class="logo" />
-
     <nav aria-label="Primary navigation">
       <a href="index.html">Get Updates</a>
       <a href="rental-application.html">Rental Application</a>
       <a href="pay-rent.html" aria-current="page">Pay Rent</a>
     </nav>
-
     <h1>Pay Rent Online</h1>
     <div class="pay-content">
-      <p>You can securely pay your rent online through our trusted partner.</p>
-      <p>If you prefer to contact us via email for rent inquiries, please use the email below and click "Copy" to easily copy the address.</p>
+      <p>We can only accept rent via email transfer at this time. Please copy and paste the address below for your e-Transfers.</p>
     </div>
-
-    <div class="email-link" role="region" aria-label="Contact email">
-      <img src="https://img.icons8.com/ios-filled/50/ffffff/new-post.png" alt="Email Icon" />
-      <span id="email-text">info.newfoundliving@gmail.com</span>
-      <button id="copy-email-btn" aria-label="Copy email address">Copy</button>
+    <div class="email-box">
+      <div class="email-link" role="region" aria-label="Contact email">
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/new-post.png" alt="Email Icon" />
+        <span id="email-text">newfoundlivingmanagement@gmail.com</span>
+        <button id="copy-email-btn" aria-label="Copy email address">Copy</button>
+      </div>
     </div>
-
   </div>
-
   <footer role="contentinfo" aria-label="Footer">
+    <div class="email-footer-link">
+      <img src="https://img.icons8.com/ios-filled/50/ffffff/new-post.png" alt="Email Icon">
+      <a href="mailto:newfoundlivingmanagement@gmail.com">newfoundlivingmanagement@gmail.com</a>
+    </div>
     <div class="social-link">
       <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook Icon" />
       <a href="https://www.facebook.com/profile.php?id=61577097797242" target="_blank" rel="noopener">Facebook</a>
     </div>
     <div class="privacy">We respect your privacy and never share your personal information.</div>
   </footer>
-
   <script>
     document.getElementById('copy-email-btn').addEventListener('click', () => {
       const emailText = document.getElementById('email-text').textContent;
@@ -249,4 +254,3 @@
   </script>
 </body>
 </html>
-
