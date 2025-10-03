@@ -18,7 +18,7 @@
 body, html {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   min-height: 100vh;
-  background: url('city.png') no-repeat center center fixed; /* Added 'fixed' for consistent background scrolling */
+  background: url('city.png') no-repeat center center fixed;
   background-size: cover;
   color: var(--white);
   position: relative;
@@ -33,7 +33,7 @@ body, html {
 
 .logo {
   width: 260px;
-  margin: 2rem auto 1rem; /* Adjusted margin for consistency */
+  margin: 2rem auto 1rem;
   display: block;
   z-index: 1;
   position: relative;
@@ -68,32 +68,39 @@ nav a[aria-current="page"] {
 .container {
   position: relative;
   z-index: 1;
-  max-width: 700px; /* Max width for application and pay rent pages */
-  margin: 2rem auto; /* Consistent margin */
+  max-width: 700px;
+  margin: 2rem auto;
   padding: 2rem;
   background-color: var(--form-bg);
   border-radius: 10px;
   box-shadow: 0 0 15px rgba(0,0,0,0.6);
-  text-align: left; /* Default text alignment for forms */
+  text-align: left;
+}
+
+/* Remove form-bg and box-shadow for application and pay rent pages */
+body.application-page .container,
+body.pay-rent-page .container {
+  background-color: transparent;
+  box-shadow: none;
 }
 
 /* Adjust container for the main page if it needs a different max-width or padding */
 body:not(.application-page):not(.pay-rent-page) .container {
-  max-width: 500px; /* Specific max-width for the main page */
-  padding: 2rem 1rem 3rem; /* Specific padding for the main page */
-  text-align: center; /* Specific text alignment for the main page */
-  background-color: transparent; /* Remove form-bg for the main page container */
-  box-shadow: none; /* Remove box-shadow for the main page container */
+  max-width: 500px;
+  padding: 2rem 1rem 3rem;
+  text-align: center;
+  background-color: transparent;
+  box-shadow: none;
 }
 
 h1 {
   font-size: 2rem;
   font-family: Georgia, serif;
   margin-bottom: 1rem;
-  text-align: center; /* Centered for all pages */
+  text-align: center;
 }
 
-h2 { /* Only used on index.html */
+h2 {
   font-size: 1.1rem;
   font-weight: normal;
   margin-bottom: 1.5rem;
@@ -101,7 +108,6 @@ h2 { /* Only used on index.html */
   text-align: center;
 }
 
-/* Form box styling for index.html */
 .form-box {
   background-color: var(--form-bg);
   padding: 1.5rem 1.5rem 2rem;
@@ -112,7 +118,6 @@ h2 { /* Only used on index.html */
   text-align: left;
 }
 
-/* Form elements common to application and index pages */
 label {
   display: block;
   margin-bottom: 0.3rem;
@@ -188,7 +193,6 @@ button:hover {
   background-color: #388e3c;
 }
 
-/* Specific styles for the "Pay Rent" page email box and copy button */
 .email-box {
   border: 2px solid var(--green);
   background-color: rgba(255, 255, 255, 0.05);
@@ -216,7 +220,7 @@ button:hover {
 }
 
 /* File upload button styling for rental application */
-.file-btn { /* file upload button styled */
+.file-btn {
   background-color: var(--green);
   color: var(--white);
   border: none;
@@ -238,12 +242,10 @@ button:hover {
   background-color: #388e3c;
 }
 
-/* Hide default file input */
 input[type="file"] {
   display: none;
 }
 
-/* Custom file input label */
 label.file-label {
   display: block;
   max-width: 300px;
@@ -263,7 +265,6 @@ label.file-label:hover {
   background-color: #388e3c;
 }
 
-/* Thank you messages */
 #thank-you, #thank-you-rental {
   display: none;
   margin-top: 1rem;
@@ -272,13 +273,11 @@ label.file-label:hover {
   text-align: center;
 }
 
-
-/* Footer Styles */
 footer {
   position: relative;
   z-index: 1;
-  margin-top: 3rem; /* Adjusted for spacing */
-  padding: 2rem 1rem; /* More padding for a distinct footer */
+  margin-top: 3rem;
+  padding: 2rem 1rem;
   font-size: 1rem;
   color: var(--white);
   display: flex;
@@ -288,13 +287,13 @@ footer {
   text-align: center;
   gap: 0.5rem;
   background-color: rgba(0, 0, 0, 0.4);
-  width: 100%; /* Ensure footer spans full width */
-  box-sizing: border-box; /* Include padding in width */
+  width: 100%;
+  box-sizing: border-box;
 }
 
 footer a {
   color: var(--white);
-  text-decoration: none; /* Remove underline by default, add only on hover */
+  text-decoration: none;
   font-size: 1rem;
   font-weight: 500;
   display: inline-flex;
@@ -316,10 +315,10 @@ footer a:hover {
 }
 
 .footer-link svg {
-  width: 20px; /* Slightly larger icons */
+  width: 20px;
   height: 20px;
-  fill: var(--white); /* Ensures the SVG is white */
-  margin-right: 5px; /* Space between icon and text */
+  fill: var(--white);
+  margin-right: 5px;
 }
 
 .privacy {
@@ -329,35 +328,32 @@ footer a:hover {
   text-align: center;
 }
 
-/* Media Queries for Responsiveness */
 @media (max-width: 768px) {
   .logo {
-    width: 200px; /* Adjust logo size for smaller screens */
+    width: 200px;
   }
 
   nav {
-    flex-direction: column; /* Stack navigation items vertically */
+    flex-direction: column;
     gap: 1rem;
   }
 
   nav a {
-    width: 80%; /* Make navigation links wider */
-    margin: 0 auto; /* Center them */
+    width: 80%;
+    margin: 0 auto;
   }
 
   .container {
-    padding: 1rem; /* Reduce padding on containers */
+    padding: 1rem;
     margin: 1rem auto;
   }
 
-  /* Specific form element adjustments for smaller screens if needed */
   .email-box {
     padding: 0.8rem;
     font-size: 1rem;
   }
 
-  /* Adjust main page container for smaller screens */
   body:not(.application-page):not(.pay-rent-page) .container {
-    padding: 1.5rem 0.75rem 2rem; /* Adjust padding for smaller screens */
+    padding: 1.5rem 0.75rem 2rem;
   }
 }
