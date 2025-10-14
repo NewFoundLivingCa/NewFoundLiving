@@ -8,12 +8,15 @@
   <link rel="icon" type="image/png" href="tinylogo1.png" />
   <style>
     :root {
-      --green: #2e7d32;
+      --brand: #21706A;           /* branded accent color (used for buttons) */
+      --brand-hover: #1b5c53;
       --white: #ffffff;
       --dark-overlay: rgba(0, 0, 0, 0.6);
-      --input-bg: rgba(255 255 255 / 0.15);
-      --input-border: rgba(255 255 255 / 0.3);
+      --input-bg: rgba(255 255 255 / 0.12);
+      --input-border: rgba(255 255 255 / 0.18);
       --form-bg: rgba(0, 0, 0, 0.85);
+      --fieldset-bg: rgba(255,255,255,0.02); /* translucent section box */
+      --fieldset-border: rgba(255,255,255,0.04);
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body, html {
@@ -54,7 +57,22 @@
       margin-bottom: 1rem;
       text-align: center;
     }
-    fieldset { border: none; margin-bottom: 1.5rem; padding: 0; }
+
+    /* Fieldset boxes: translucent separated sections */
+    fieldset {
+      border: 1px solid var(--fieldset-border);
+      background: linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01));
+      backdrop-filter: blur(6px);
+      padding: 1rem 1rem 1.1rem;
+      margin-bottom: 1.25rem;
+      border-radius: 8px;
+    }
+    fieldset legend {
+      font-weight: 700;
+      padding: 0 0.4rem;
+      margin-left: 0.2rem;
+    }
+
     label {
       display: block;
       margin-bottom: 0.3rem;
@@ -67,7 +85,8 @@
     input[type="tel"],
     textarea,
     select,
-    input[type="number"] {
+    input[type="number"],
+    input[type="url"] {
       width: 100%;
       padding: 0.5rem 0.75rem;
       margin-bottom: 1rem;
@@ -81,7 +100,7 @@
     textarea { resize: vertical; min-height: 80px; }
     input[type="checkbox"], input[type="radio"] {
       margin-right: 0.4rem;
-      transform: scale(1.1);
+      transform: scale(1.05);
       vertical-align: middle;
     }
     .checkbox-group {
@@ -98,41 +117,58 @@
       cursor: pointer;
       color: var(--white);
     }
+
+    /* Buttons updated to brand color */
     button, .file-btn {
-      background-color: var(--green);
+      background-color: var(--brand);
       color: var(--white);
       border: none;
-      padding: 0.75rem 1.5rem;
+      padding: 0.75rem 1.25rem;
       font-size: 1rem;
       border-radius: 8px;
       cursor: pointer;
-      font-weight: bold;
+      font-weight: 700;
       width: 100%;
-      max-width: 300px;
+      max-width: 320px;
       margin: 1rem auto 0;
       display: block;
-      transition: background-color 0.3s;
+      transition: background-color 0.15s ease;
       text-align: center;
       user-select: none;
     }
-    button:hover, .file-btn:hover { background-color: #388e3c; }
+    button:hover, .file-btn:hover { background-color: var(--brand-hover); }
+
+    /* smaller helper button (paste) */
+    .btn-mini {
+      background: var(--brand);
+      color: var(--white);
+      border: none;
+      border-radius: 6px;
+      padding: 0.4rem 0.8rem;
+      cursor: pointer;
+      font-weight:700;
+      font-size:0.92rem;
+    }
+    .btn-mini:hover { background: var(--brand-hover); }
+
     input[type="file"] { display: none; }
     label.file-label {
       display: block;
-      max-width: 300px;
+      max-width: 320px;
       margin: 0.5rem auto 1rem;
       cursor: pointer;
       font-weight: bold;
       font-size: 1rem;
       border-radius: 8px;
       padding: 0.75rem 1.5rem;
-      background-color: var(--green);
+      background-color: var(--brand);
       color: var(--white);
       text-align: center;
-      transition: background-color 0.3s;
+      transition: background-color 0.15s;
       user-select: none;
     }
-    label.file-label:hover { background-color: #388e3c; }
+    label.file-label:hover { background-color: var(--brand-hover); }
+
     #thank-you-rental {
       display: none;
       margin-top: 1rem;
@@ -181,8 +217,33 @@
       color: #dddddd;
       text-align: center;
     }
-    /* Pet details section initially hidden if JS disables */
-    #pet-details-section[hidden] { display: none; }
+
+    /* Paste button styling moved and centered */
+    .paste-centered {
+      display: block;
+      margin: 8px auto 0;
+      width: 140px;
+      padding: 0.38rem 0.6rem;
+      font-size: 0.9rem;
+      border-radius: 6px;
+      text-align: center;
+      background: var(--brand);
+      color: var(--white);
+      border: none;
+    }
+    .paste-centered:hover { background: var(--brand-hover); }
+
+    .helper { font-size:0.95rem; color: #dddddd; margin-top:0.3rem; }
+    .proof-options { display:flex; gap:12px; align-items:center; margin-top:8px; flex-wrap:wrap; }
+    .proof-flow { margin-top:12px; }
+    .proof-flow .inline-row { display:flex; gap:8px; max-width:760px; }
+    .proof-flow input[type="url"] { flex:1; }
+
+    @media (max-width:560px) {
+      .container { padding: 1.4rem; margin: 2rem 1rem 4rem; }
+      button, .file-btn { max-width: 100%; }
+      .paste-centered { width: 46%; }
+    }
   </style>
 </head>
 <body>
@@ -190,7 +251,7 @@
   <img src="logo-transparent.png" alt="Newfound Living Logo" class="logo" />
   <div class="container" role="main" aria-label="Rental Application Form">
     <h1>Rental Application</h1>
-    <form id="rental-form" action="https://formspree.io/f/xldnwbqq" method="POST" enctype="multipart/form-data" novalidate>
+    <form id="rental-form" action="https://formspree.io/f/xldnwbqq" method="POST" novalidate>
       <fieldset>
         <label for="property-address">Property Address</label>
         <input type="text" id="property-address" name="property_address" required placeholder="e.g., 123 Main St" />
@@ -238,9 +299,35 @@
         <input type="number" id="monthly-income" name="monthly_income" required placeholder="e.g., 3000" />
         <label for="employment-length">Length of Employment</label>
         <input type="text" id="employment-length" name="length_of_employment" placeholder="e.g., 3 years" />
-        <label><input type="checkbox" name="proof_of_income" value="Yes" /> Proof of income attached (required for all adult tenants)</label>
-        <label for="income-proof-file" class="file-label" tabindex="0">Choose file to upload proof of income</label>
-        <input type="file" id="income-proof-file" name="income_proof_file" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx,.txt" />
+
+        <!-- REPLACED UPLOAD AREA: only Google Form or Email paths (no direct attach) -->
+        <label><strong>Proof of income / Financial Assistance</strong></label>
+        <p class="helper">Please either upload using our Google Form (you may be asked to sign in), then paste the confirmation or Drive link below, or click "Email Proof of Income" to open your mail client and attach your documents manually.</p>
+
+        <div class="proof-options" role="radiogroup" aria-label="Proof submission method">
+          <label style="display:flex; align-items:center; gap:8px;">
+            <input type="radio" name="proof_option" value="google_form" checked /> Google Form
+          </label>
+          <label style="display:flex; align-items:center; gap:8px;">
+            <input type="radio" name="proof_option" value="email" /> Email
+          </label>
+        </div>
+
+        <div id="google-flow" class="proof-flow" aria-hidden="false">
+          <button type="button" id="open-google-form" class="file-btn" aria-label="Open Google Form to upload proof of income">Open Google Form to upload proof</button>
+
+          <div class="inline-row" style="margin-top:10px;">
+            <input type="url" id="proof-income-link" name="proof_income_link" placeholder="Paste Google Form confirmation or Drive link here" aria-label="Paste proof link" />
+          </div>
+
+          <!-- Paste button moved below the URL input, centered and smaller -->
+          <button type="button" id="paste-clipboard" class="paste-centered" title="Paste URL from clipboard" aria-label="Paste link from clipboard">Paste link</button>
+        </div>
+
+        <div id="email-flow" class="proof-flow" style="display:none;">
+          <p class="helper">Click the button below to open your email client. Attach your proof of income and include your full name & property address in the message so we can match it to your application.</p>
+          <button type="button" id="email-proof-btn" class="btn-mini" title="Email proof">Email Proof of Income</button>
+        </div>
       </fieldset>
 
       <fieldset>
@@ -328,24 +415,128 @@
     </a>
     <div class="privacy">© 2025 Newfound Living | All rights reserved.</div>
   </footer>
+
   <script>
-    // Show/hide pet details fields depending on Yes/No selection
-    const petsYes = document.getElementById('pets-yes');
-    const petsNo = document.getElementById('pets-no');
-    const petDetailsSection = document.getElementById('pet-details-section');
-    function togglePetDetails() {
-      if (petsYes.checked) {
-        petDetailsSection.style.display = '';
-      } else {
-        petDetailsSection.style.display = 'none';
-        document.getElementById('pet-type').value = '';
-        document.getElementById('number-of-pets').value = '';
-        document.getElementById('breed-size').value = '';
+    (function () {
+      // --- Pet details toggle (preserves your original behavior) ---
+      const petsYes = document.getElementById('pets-yes');
+      const petsNo = document.getElementById('pets-no');
+      const petDetailsSection = document.getElementById('pet-details-section');
+      function togglePetDetails() {
+        if (petsYes && petsYes.checked) {
+          petDetailsSection.style.display = '';
+        } else {
+          petDetailsSection.style.display = 'none';
+          const pt = document.getElementById('pet-type');
+          const pn = document.getElementById('number-of-pets');
+          const bs = document.getElementById('breed-size');
+          if (pt) pt.value = '';
+          if (pn) pn.value = '';
+          if (bs) bs.value = '';
+        }
       }
-    }
-    petsYes.addEventListener('change', togglePetDetails);
-    petsNo.addEventListener('change', togglePetDetails);
-    togglePetDetails();
+      if (petsYes && petsNo) {
+        petsYes.addEventListener('change', togglePetDetails);
+        petsNo.addEventListener('change', togglePetDetails);
+        togglePetDetails();
+      }
+
+      // --- Upload-option behavior ---
+      const GOOGLE_FORM_SHORT = 'https://forms.gle/1eoWj53oeUU6LiRk9'; // your short link
+      const EMAIL_ADDRESS = 'info.newfoundliving@gmail.com';
+
+      const openGoogleBtn = document.getElementById('open-google-form');
+      const pasteBtn = document.getElementById('paste-clipboard');
+      const proofLinkInput = document.getElementById('proof-income-link');
+      const emailProofBtn = document.getElementById('email-proof-btn');
+      const proofOptionRadios = document.querySelectorAll('input[name="proof_option"]');
+      const googleFlow = document.getElementById('google-flow');
+      const emailFlow = document.getElementById('email-flow');
+      const form = document.getElementById('rental-form');
+
+      // Open Google Form in a new tab
+      if (openGoogleBtn) {
+        openGoogleBtn.addEventListener('click', function () {
+          window.open(GOOGLE_FORM_SHORT, '_blank', 'noopener,noreferrer');
+        });
+        openGoogleBtn.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openGoogleBtn.click(); }
+        });
+      }
+
+      // Paste-from-clipboard helper
+      if (pasteBtn && navigator.clipboard) {
+        pasteBtn.addEventListener('click', async function () {
+          try {
+            const text = await navigator.clipboard.readText();
+            if (text && /^https?:\/\//i.test(text.trim())) {
+              proofLinkInput.value = text.trim();
+              proofLinkInput.focus();
+            } else {
+              alert('Clipboard does not contain a URL. Copy the confirmation or Drive link and try again.');
+            }
+          } catch (err) {
+            console.error('Clipboard read failed', err);
+            alert('Could not read clipboard. Please paste the link manually.');
+          }
+        });
+      }
+
+      // Email button opens mail client; user must attach file manually
+      if (emailProofBtn) {
+        emailProofBtn.addEventListener('click', function () {
+          const name = (document.getElementById('full-name') || {}).value || '[applicant name]';
+          const email = (document.getElementById('email') || {}).value || '';
+          const phone = (document.getElementById('phone') || {}).value || '';
+          const subject = encodeURIComponent(`Proof of income from ${name}`);
+          const bodyLines = [
+            `Applicant: ${name}`,
+            `Email: ${email}`,
+            `Phone: ${phone}`,
+            '',
+            'Attached: (please attach your proof of income to this email)',
+            '',
+            'Property (if applicable):',
+            ''
+          ];
+          const body = encodeURIComponent(bodyLines.join('\n'));
+          window.location.href = `mailto:${EMAIL_ADDRESS}?subject=${subject}&body=${body}`;
+        });
+      }
+
+      // Toggle which flow is visible
+      function updateFlows() {
+        const selected = document.querySelector('input[name="proof_option"]:checked')?.value;
+        if (googleFlow) googleFlow.style.display = selected === 'google_form' ? 'block' : 'none';
+        if (emailFlow) emailFlow.style.display = selected === 'email' ? 'block' : 'none';
+      }
+      proofOptionRadios.forEach(r => r.addEventListener('change', updateFlows));
+      updateFlows();
+
+      // Form submit validation: require proof link when Google Form selected; email path reminds user
+      if (form) {
+        form.addEventListener('submit', function (e) {
+          const selected = document.querySelector('input[name="proof_option"]:checked')?.value;
+          const link = (proofLinkInput && proofLinkInput.value || '').trim();
+
+          if (selected === 'google_form') {
+            if (!link) {
+              e.preventDefault();
+              alert('You selected Google Form upload. Please paste the confirmation or Drive link from the Google Form into the field so we can locate your file (or upload now and then paste the link).');
+              if (proofLinkInput) proofLinkInput.focus();
+              return false;
+            }
+          } else if (selected === 'email') {
+            if (!confirm('You selected Email. After submitting this application, please send an email with your attachment to info.newfoundliving@gmail.com including your full name and property address so we can match it. Click OK to submit.')) {
+              e.preventDefault();
+              return false;
+            }
+          }
+          // leave form to submit to Formspree
+          return true;
+        });
+      }
+    })();
   </script>
 </body>
 </html>
